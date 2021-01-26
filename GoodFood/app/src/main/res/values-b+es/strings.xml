@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">GoodFood</string>
+    <string name="app_name">GoodFood-ES</string>
+    <string name="hello_world">Hola mundo</string>
 </resources>
