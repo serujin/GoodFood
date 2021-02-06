@@ -1,59 +1,40 @@
 package com.android.serujilituni.goodfood.model;
 
 public class Plate {
-    private int plateId;
-    private String plateName;
-    private float platePrice;
-    private String plateDesc;
-    private int restaurantId;
+    private String name;
+    private String desc;
+    private float price;
 
-    public Plate() {}
-
-    public Plate(int plateId, String plateName, float platePrice, String plateDesc, int restaurantId) {
-        this.plateId = plateId;
-        this.plateName = plateName;
-        this.platePrice = platePrice;
-        this.plateDesc = plateDesc;
-        this.restaurantId = restaurantId;
+    public Plate() {
     }
 
-    public int getPlateId() {
-        return plateId;
+    public Plate(String name, String desc, float price) {
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
     }
 
-    public void setPlateId(int plateId) {
-        this.plateId = plateId;
+    public String getName() {
+        return name;
     }
 
-    public String getPlateName() {
-        return plateName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setPlateName(String plateName) {
-        this.plateName = plateName;
+    public String getDesc() {
+        return desc;
     }
 
-    public float getPlatePrice() {
-        return platePrice;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public void setPlatePrice(float platePrice) {
-        this.platePrice = platePrice;
+    public float getPrice() {
+        return price;
     }
 
-    public String getPlateDesc() {
-        return plateDesc;
-    }
-
-    public void setPlateDesc(String plateDesc) {
-        this.plateDesc = plateDesc;
-    }
-
-    public int getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

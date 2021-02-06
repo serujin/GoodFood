@@ -1,11 +1,9 @@
 package com.android.serujilituni.goodfood.store;
 
-import android.util.Log;
-
+import com.android.serujilituni.goodfood.model.Order;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Random;
 
 public class DBManager {
 
@@ -20,22 +18,11 @@ public class DBManager {
     }
 
     private DBManager() {
-        initDatabase();
-        Log.i("ADAd", "dasdawd");
-    }
-
-    private void initDatabase() {
         this.db = FirebaseDatabase.getInstance().getReference();
-        if(this.db == null) {
-            System.out.println("DB CREATED");
-        }
-        this.db.
     }
 
-    public void storeOrder(Object[] data) {
-
-
-
+    public void storeOrder(FirebaseAuth auth, Order toStore) {
+        this.db.child("orders").child(auth.getCurrentUser().getEmail()).setValue(toStore);
     }
 
 

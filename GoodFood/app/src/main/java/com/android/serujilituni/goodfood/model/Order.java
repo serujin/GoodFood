@@ -1,51 +1,53 @@
 package com.android.serujilituni.goodfood.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Order {
-    private int orderId;
-    private float orderPrice;
-    private LocalDateTime orderDateTime;
-    private int userId;
+    private String address;
+    private Restaurant restaurant;
+    private List<Plate> plates;
+    private LocalDateTime dateTime;
 
-    public Order() {}
-
-    public Order(int orderId, float orderPrice, LocalDateTime orderDateTime, int userId) {
-        this.orderId = orderId;
-        this.orderPrice = orderPrice;
-        this.orderDateTime = orderDateTime;
-        this.userId = userId;
+    public Order() {
     }
 
-    public int getOrderId() {
-        return orderId;
+    public Order(String address, Restaurant restaurant, List<Plate> plates, LocalDateTime dateTime) {
+        this.address = address;
+        this.restaurant = restaurant;
+        this.plates = plates;
+        this.dateTime = dateTime;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public String getAddress() {
+        return address;
     }
 
-    public float getOrderPrice() {
-        return orderPrice;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setOrderPrice(float orderPrice) {
-        this.orderPrice = orderPrice;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public LocalDateTime getOrderDateTime() {
-        return orderDateTime;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
-    public void setOrderDateTime(LocalDateTime orderDateTime) {
-        this.orderDateTime = orderDateTime;
+    public List<Plate> getPlates() {
+        return plates;
     }
 
-    public int getUserId() {
-        return userId;
+    public void setPlates(List<Plate> plates) {
+        this.plates = plates;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }

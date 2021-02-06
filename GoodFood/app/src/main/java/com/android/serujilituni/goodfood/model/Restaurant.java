@@ -1,40 +1,42 @@
 package com.android.serujilituni.goodfood.model;
 
+import java.util.List;
+
 public class Restaurant {
-    private int restaurantId;
-    private String restaurantAddress;
-    private String restaurantName;
+    private String name;
+    private String address;
+    private List<Plate> plates;
 
     public Restaurant() {
     }
 
-    public Restaurant(int restaurantId, String restaurantAddress, String restaurantName) {
-        this.restaurantId = restaurantId;
-        this.restaurantAddress = restaurantAddress;
-        this.restaurantName = restaurantName;
+    public Restaurant(String name, String address, List<Plate> plates) {
+        this.name = name;
+        this.address = address;
+        this.plates = plates;
     }
 
-    public int getRestaurantId() {
-        return restaurantId;
+    public String getName() {
+        return name;
     }
 
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRestaurantAddress() {
-        return restaurantAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRestaurantAddress(String restaurantAddress) {
-        this.restaurantAddress = restaurantAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getRestaurantName() {
-        return restaurantName;
+    public List<Plate> getPlates() {
+        return plates;
     }
 
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
+    public void setPlates(List<Plate> plates) {
+        this.plates = plates;
     }
 }
