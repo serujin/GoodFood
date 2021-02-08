@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GoodFood">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.OrderResumeActivity" />
+        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.RestaurantsActivity" />
+        <activity android:name=".activities.ChangeDataActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

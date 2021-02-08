@@ -1,4 +1,4 @@
-package com.android.serujilituni.goodfood;
+package com.android.serujilituni.goodfood.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.store.DBManager;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

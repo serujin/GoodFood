@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">GoodFood</string>
+    <string name="app_logo_desc">App logo</string>
+    <string name="change_password">Change Password</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="google_login">Google login</string>
+    <string name="search_button">Search button</string>
+    <string name="search">Search...</string>
+    <string name="order_context_menu">Order context menu</string>
+    <string name="order_resume">Order Resume</string>
+    <string name="distance_from_restaurant">Distance from restaurant:</string>
+    <string name="final_price">Final price:</string>
+    <string name="finalize_and_pay">Finalize and pay</string>
+    <string name="cancel_order">Cancel order</string>
+    <string name="address">Address:</string>
+    <string name="corfirm_your_password">Corfirm your password</string>
 </resources>

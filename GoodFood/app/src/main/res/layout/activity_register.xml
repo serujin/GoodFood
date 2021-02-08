@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.RegisterActivity">
 
     <LinearLayout
         android:id="@+id/main"
@@ -40,29 +40,38 @@
         <LinearLayout
             android:id="@+id/input_layout"
             android:layout_width="300dp"
-            android:layout_height="90dp"
+            android:layout_height="120dp"
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/login_user_email"
+                android:id="@+id/register_user_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:autofillHints=""
                 android:ems="10"
-                android:gravity="center_vertical"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:autofillHints="" />
 
             <EditText
-                android:id="@+id/loign_user_pass"
+                android:id="@+id/register_user_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:autofillHints="" />
+
+            <EditText
+                android:id="@+id/register_user_pass_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="@string/password"
+                android:hint="@string/corfirm_your_password"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -77,37 +86,11 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/login_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/login" />
-
-            <Button
                 android:id="@+id/register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/register" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-
-        <LinearLayout
-            android:id="@+id/google_layout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/google_login"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/google_login"
-                tools:srcCompat="@tools:sample/avatars" />
-        </LinearLayout>
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,9 +24,4 @@ public class DBManager {
     public void storeOrder(FirebaseAuth auth, Order toStore) {
         this.db.child("orders").child(auth.getCurrentUser().getEmail()).setValue(toStore);
     }
-
-
-
-
-
 }
