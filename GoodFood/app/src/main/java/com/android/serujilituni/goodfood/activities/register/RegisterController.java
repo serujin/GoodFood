@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.credentials.CredentialsManager;
 import com.android.serujilituni.goodfood.utils.Utils;
@@ -35,16 +36,49 @@ public class RegisterController {
         String password = Utils.getStringFromEditText(this.ets[Constants.REGISTER_PASSWORD_ET_INDEX]).trim();
         String confirmed = Utils.getStringFromEditText(this.ets[Constants.REGISTER_CONFIRMED_PASSWORD_ET_INDEX]).trim();
         String name = Utils.getStringFromEditText(this.ets[Constants.REGISTER_NAME_ET_INDEX]).trim();
-        validateUserData(email, password, confirmed, name);
-        pb.setVisibility(View.VISIBLE);
-        CredentialsManager.register(email, password, name);
-        pb.setVisibility(View.GONE);
+        if(validateUserData(email, password, confirmed, name)) {
+            pb.setVisibility(View.VISIBLE);
+            CredentialsManager.register(email, password, name);
+            pb.setVisibility(View.GONE);
+        }
     }
 
-    private void validateUserData(String email, String password, String confirmed, String name) {
+    private boolean validateUserData(String email, String password, String confirmed, String name) {
         int validationState = Utils.validateRegister(email, password, confirmed, name);
         if(Utils.isAnErrorState(validationState)) {
             Utils.showText(Utils.getStringFromID(validationState), Toast.LENGTH_LONG);
+            showError(validationState);
+            return false;
+        }
+        return true;
+    }
+
+    private void showError(int errorCode) {
+        switch (errorCode) {
+            case R.string.required_name_error:
+                Utils.setErrorOnTextView(this.ets[Constants.REGISTER_NAME_ET_INDEX], R.string.required_name_error);
+                this.ets[Constants.REGISTER_NAME_ET_INDEX].requestFocus();
+                break;
+            case R.string.required_email_error:
+                Utils.setErrorOnTextView(this.ets[Constants.REGISTER_EMAIL_ET_INDEX], R.string.required_email_error);
+                this.ets[Constants.REGISTER_EMAIL_ET_INDEX].requestFocus();
+                break;
+            case R.string.invalid_email_error:
+                Utils.setErrorOnTextView(this.ets[Constants.REGISTER_EMAIL_ET_INDEX], R.string.invalid_email_error);
+                this.ets[Constants.REGISTER_EMAIL_ET_INDEX].requestFocus();
+                break;
+            case R.string.required_password_error:
+                Utils.setErrorOnTextView(this.ets[Constants.REGISTER_PASSWORD_ET_INDEX], R.string.required_password_error);
+                this.ets[Constants.REGISTER_PASSWORD_ET_INDEX].requestFocus();
+                break;
+            case  R.string.incorrect_password_length_error:
+                Utils.setErrorOnTextView(this.ets[Constants.REGISTER_PASSWORD_ET_INDEX],R.string.incorrect_password_length_error);
+                this.ets[Constants.REGISTER_PASSWORD_ET_INDEX].requestFocus();
+                break;
+            case R.string.non_equals_password_error:
+                Utils.setErrorOnTextView(this.ets[Constants.REGISTER_CONFIRMED_PASSWORD_ET_INDEX], R.string.non_equals_password_error);
+                this.ets[Constants.REGISTER_CONFIRMED_PASSWORD_ET_INDEX].requestFocus();
+                break;
         }
     }
 }

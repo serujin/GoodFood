@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Patterns;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.serujilituni.goodfood.R;
@@ -53,6 +54,16 @@ public class Utils {
         return R.string.no_error;
     }
 
+    public static int validateResetPassword(String email) {
+        if (email.isEmpty()) {
+            return R.string.required_email_error;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return R.string.invalid_email_error;
+        }
+        return R.string.no_error;
+    }
+
     public static void registrationAction(boolean wasSuccessful) {
         if(wasSuccessful) {
             Utils.showText(Utils.getStringFromID(R.string.successfully_registered), Toast.LENGTH_LONG);
@@ -60,6 +71,10 @@ public class Utils {
         } else {
             Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
         }
+    }
+
+    public static void setErrorOnTextView(TextView tv, int errorcode) {
+        tv.setError(Utils.getStringFromID(errorcode));
     }
 
     public static boolean isAnErrorState(int state) {
