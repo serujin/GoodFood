@@ -1,4 +1,4 @@
-package com.android.serujilituni.goodfood.activities;
+package com.android.serujilituni.goodfood.activities.changedata;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.android.serujilituni.goodfood.activities;
+package com.android.serujilituni.goodfood.activities.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.android.serujilituni.goodfood.R;
 
-public class MenuActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_register);
     }
 }
