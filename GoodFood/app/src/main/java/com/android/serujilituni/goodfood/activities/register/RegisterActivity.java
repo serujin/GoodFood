@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -26,7 +27,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText emailEt;
     private EditText passwordEt;
+    private EditText confirmPasswordEt;
     private EditText fullNameEt;
+    private Button registerBtn;
 
     private ProgressBar pb;
 
@@ -36,6 +39,20 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+        emailEt = findViewById(R.id.register_user_email);
+        passwordEt = findViewById(R.id.register_user_password);
+        confirmPasswordEt = findViewById(R.id.register_user_pass_confirm);
+        fullNameEt = findViewById(R.id.register_user_fullname);
+        registerBtn = findViewById(R.id.register_btn);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                registerUser();
+            }
+        });
+        pb = findViewById(R.id.progress_bar);
+        pb.setVisibility(View.GONE);
 
         /**
          * Logout implementation
@@ -54,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void registerUser() {
         String email = emailEt.getText().toString().trim();
         String password = passwordEt.getText().toString().trim();
+        String confirmedPassword = confirmPasswordEt.getText().toString().trim();
         String fullName = fullNameEt.getText().toString().trim();
 
         if(fullName.isEmpty()) {
@@ -68,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEt.setError("Please provide valid email!");
             emailEt.requestFocus();
             return;
@@ -77,10 +95,17 @@ public class RegisterActivity extends AppCompatActivity {
         if(password.isEmpty()) {
             passwordEt.setError("Password is required!");
             passwordEt.requestFocus();
+            return;
         }
 
         if(password.length() < 8){
             passwordEt.setError("Min password length should be 8 characters!");
+            passwordEt.requestFocus();
+            return;
+        }
+
+        if(!password.equals(confirmedPassword)) {
+            passwordEt.setError("Password and confirmed password must be equal");
             passwordEt.requestFocus();
             return;
         }

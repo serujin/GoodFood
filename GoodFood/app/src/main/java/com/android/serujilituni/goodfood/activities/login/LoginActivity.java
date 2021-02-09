@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.forgotpassword.ResetPasswordActivity;
+import com.android.serujilituni.goodfood.activities.register.RegisterActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.model.Restaurant;
 import com.android.serujilituni.goodfood.store.AppCache;
@@ -26,9 +29,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity  implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView registerTv;
+    private TextView forgotTv;
     private EditText emailEt;
     private EditText passwordEt;
     private Button loginBtn;
@@ -71,64 +75,49 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
          DBManager.getInstance().storeOrder(mAuth,order);
          **/
         registerTv = (TextView) findViewById(R.id.register_tv);
+        forgotTv = (TextView) findViewById(R.id.forgot_password_tv);
         mAuth = FirebaseAuth.getInstance();
 
         loginBtn = (Button) findViewById(R.id.login_btn);
-
-        loginBtn.setOnClickListener(this);
 
         emailEt = (EditText) findViewById(R.id.login_user_email);
         passwordEt = (EditText) findViewById(R.id.login_user_pass);
 
         pb = (ProgressBar) findViewById(R.id.progress_bar);
 
+        pb.setVisibility(View.GONE);
+        loginBtn.setOnClickListener(this);
+        registerTv.setOnClickListener(this);
+        forgotTv.setOnClickListener(this);
 
     }
 
-    protected ValueEventListener sendEvent(){
-
+    protected ValueEventListener sendEvent() {
         return new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.getValue()!=null) {
+                if (snapshot.getValue() != null) {
 
-                    for(DataSnapshot child : snapshot.getChildren()) {
+                    for (DataSnapshot child : snapshot.getChildren()) {
                         Restaurant r = child.getValue(Restaurant.class);
                         AppCache.getInstance().addRestaurant(r);
                     }
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error){
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         };
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
-
-    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-            Toast.makeText(this, "User ID: "+ user.getUid(), Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Error: sign in failed.", Toast.LENGTH_LONG).show();
-        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.register_btn:
-                startActivity(new Intent(this, RegisterActivity.class));
+            case R.id.register_tv:
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 break;
-
+            case R.id.forgot_password_tv:
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
+                break;
             case R.id.login_btn:
                 userLogin();
                 break;
@@ -139,25 +128,25 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         String email = emailEt.getText().toString().trim();
         String password = passwordEt.getText().toString().trim();
 
-        if(email.isEmpty()) {
+        if (email.isEmpty()) {
             emailEt.setError("Email is required!");
             emailEt.requestFocus();
             return;
         }
 
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEt.setError("Enter a valid email!");
             emailEt.requestFocus();
             return;
         }
 
-        if(password.isEmpty()) {
+        if (password.isEmpty()) {
             passwordEt.setError("Password is required!");
             passwordEt.requestFocus();
             return;
         }
 
-        if(password.length() < 8){
+        if (password.length() < 8) {
             passwordEt.setError("Min password length should be 8 characters!");
             passwordEt.requestFocus();
             return;
@@ -165,24 +154,21 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
         pb.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>(){
-
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                    if(user.isEmailVerified()) {
-                        //redirect to user profile
+                    if (user.isEmailVerified()) {
                         startActivity(new Intent(LoginActivity.this, RestaurantsActivity.class));
-                    }else {
+                    } else {
                         user.sendEmailVerification();
-                        Toast.makeText(LoginActivity.this,"Check your email to verify account",Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Check your email to verify account", Toast.LENGTH_LONG).show();
                     }
-
-                }else {
-                    Toast.makeText(LoginActivity.this,"Failed to login! Check credentials",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Failed to login! Check credentials", Toast.LENGTH_LONG).show();
                 }
+                pb.setVisibility(View.GONE);
             }
         });
 
