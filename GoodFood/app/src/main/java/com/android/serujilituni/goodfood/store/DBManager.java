@@ -43,14 +43,6 @@ public class DBManager {
     public void getRestaurants(ValueEventListener vel) {
         this.db.child("restaurants").addListenerForSingleValueEvent(vel);
     }
-
-
-
-
-
-
-
-
 }
 
 

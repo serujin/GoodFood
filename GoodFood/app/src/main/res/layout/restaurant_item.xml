@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="-25dp"
+    app:cardCornerRadius="25dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/restaurant_logo"
+            android:layout_width="410dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/restaurant_logo"
+            android:scaleType="center"
+            app:srcCompat="@drawable/restaurantdemo__1_" />
+
+        <TextView
+            android:id="@+id/restaurant_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/textview_custom_border"
+            android:gravity="center"
+            android:text="@string/restaurant_name" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

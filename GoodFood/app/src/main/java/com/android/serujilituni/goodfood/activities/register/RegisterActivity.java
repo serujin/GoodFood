@@ -1,19 +1,18 @@
-package com.android.serujilituni.goodfood.activities;
+package com.android.serujilituni.goodfood.activities.register;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.android.serujilituni.goodfood.MainActivity;
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,14 +39,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         /**
          * Logout implementation
-        Button logout;
-        logout = (Button) findViewById(R.id.singOut_btn);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(ProfileActivity.this,MainActivity.class));
-            }
+         Button logout;
+         logout = (Button) findViewById(R.id.singOut_btn);
+         logout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(ProfileActivity.this,MainActivity.class));
+        }
         });
          */
 
@@ -103,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 pb.setVisibility(View.VISIBLE);
 
                                 //redirect to login Layout
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                             }else {
                                 Toast.makeText(getApplicationContext(),"Failed to register, try again!",Toast.LENGTH_LONG).show();
                                 pb.setVisibility(View.GONE);
@@ -117,9 +116,4 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 }
