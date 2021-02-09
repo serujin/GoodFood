@@ -25,7 +25,7 @@ public class RestaurantsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
-        DrawerLayout drawer = findViewById(R.id)
+
     }
 }
         /**RecyclerView rv = findViewById(R.id.restaurants_layout);
@@ -40,5 +40,4 @@ public class RestaurantsActivity extends AppCompatActivity {
             items.add(new RestaurantItem(R.drawable.restaurantdemo__1_, "RESTAURANT NAME"));
         }
         return items;
-    }
-}
+    }*/
