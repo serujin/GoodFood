@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_logo_desc"
-                tools:srcCompat="@drawable/goodfoodlogo" />
+                android:src="@drawable/goodfoodlogo" />
         </LinearLayout>
 
         <Space
@@ -126,13 +126,14 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/google_login"
-                tools:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+                android:src="@drawable/common_google_signin_btn_icon_dark" />
         </LinearLayout>
 
     </LinearLayout>
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"

@@ -1,25 +1,15 @@
 package com.android.serujilituni.goodfood.store;
 
-import androidx.annotation.NonNull;
-
-import com.android.serujilituni.goodfood.model.Order;
-import com.android.serujilituni.goodfood.model.Restaurant;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import com.android.serujilituni.goodfood.constants.Constants;
+import com.android.serujilituni.goodfood.model.User;
+import com.android.serujilituni.goodfood.utils.Utils;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 
 public class DBManager {
 
     private static DBManager instance;
-    private DatabaseReference db;
+    private FirebaseDatabase db;
 
     public static DBManager getInstance() {
         if (DBManager.instance == null) {
@@ -29,9 +19,16 @@ public class DBManager {
     }
 
     private DBManager() {
-        this.db = FirebaseDatabase.getInstance().getReference();
+        this.db = FirebaseDatabase.getInstance();
     }
 
+    public void storeUser(String userUid, User user) {
+        this.db.getReference(Constants.DB_USERS_REFERENCE).child(userUid).setValue(user)
+                .addOnCompleteListener(
+                        (OnCompleteListener) task -> Utils.registrationAction(task.isSuccessful())
+                );
+    }
+/**
     public void storeOrder(FirebaseAuth auth, Order toStore) {
         this.db.child("orders").child(auth.getCurrentUser().getEmail()).setValue(toStore);
     }
@@ -43,6 +40,7 @@ public class DBManager {
     public void getRestaurants(ValueEventListener vel) {
         this.db.child("restaurants").addListenerForSingleValueEvent(vel);
     }
+ */
 }
 
 

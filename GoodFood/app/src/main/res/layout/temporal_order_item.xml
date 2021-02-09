@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/plate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:weightSum="0">
+
+            <TextView
+                android:id="@+id/plate_name_desc"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp"
+                android:text="@string/plate" />
+
+            <TextView
+                android:id="@+id/plate_name_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:weightSum="0">
+
+            <TextView
+                android:id="@+id/plate_quantity_desc"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp"
+                android:text="@string/quantity" />
+
+            <TextView
+                android:id="@+id/plate_quantity_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:weightSum="0">
+
+            <TextView
+                android:id="@+id/plate_price_desc"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp"
+                android:text="@string/price" />
+
+            <TextView
+                android:id="@+id/plate_price_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_weight="0" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

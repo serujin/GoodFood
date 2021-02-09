@@ -21,4 +21,16 @@ public class Constants {
     public static final String ORDER_PRICE = "order_price";
     public static final String ORDER_DATETIME = "order_datetime";
 
+    public static final int LOGIN_REGISTER_TV_INDEX = 0;
+    public static final int LOGIN_PASSWORD_TV_INDEX = 1;
+    public static final int LOGIN_EMAIL_ET_INDEX = 0;
+    public static final int LOGIN_PASSWORD_ET_INDEX = 1;
+
+    public static final int REGISTER_EMAIL_ET_INDEX = 0;
+    public static final int REGISTER_PASSWORD_ET_INDEX = 1;
+    public static final int REGISTER_CONFIRMED_PASSWORD_ET_INDEX = 2;
+    public static final int REGISTER_NAME_ET_INDEX = 3;
+
+    public static final String DB_USERS_REFERENCE = "users";
+
 }

@@ -1,4 +1,4 @@
-package com.android.serujilituni.goodfood.model;
+package com.android.serujilituni.goodfood.items;
 
 public class RestaurantItem {
     private int imageResource;

@@ -1,4 +1,4 @@
-package com.android.serujilituni.goodfood.model;
+package com.android.serujilituni.goodfood.adapters;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.items.RestaurantItem;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull RestaurantViewHolder holder, int position) {
-        Log.d("ELEMENT", "Element " + position + " set.");
+        holder.getImageView().setImageResource(mDataSet.get(position).getImageResource());
         holder.getTextView().setText(mDataSet.get(position).getRestaurantName());
     }
 
@@ -46,12 +47,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
         public RestaurantViewHolder(View v) {
             super(v);
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d("ELEMENT", "Element " + getAdapterPosition() + " clicked.");
-                }
-            });
+            v.setOnClickListener(view -> Log.d("ELEMENT", "Element " + getAdapterPosition() + " clicked."));
             this.imageView = v.findViewById(R.id.restaurant_logo);
             this.textView = v.findViewById(R.id.restaurant_name);
         }

@@ -13,7 +13,7 @@
 
         <ImageView
             android:id="@+id/restaurant_logo"
-            android:layout_width="410dp"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
             android:contentDescription="@string/restaurant_logo"
             android:scaleType="center"
