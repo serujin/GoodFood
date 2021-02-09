@@ -25,7 +25,7 @@ public class RestaurantsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
-
+        System.out.println("alkshjdlahskdas");
     }
 }
         /**RecyclerView rv = findViewById(R.id.restaurants_layout);
