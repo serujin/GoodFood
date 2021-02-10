@@ -51,19 +51,41 @@ public class LoginController {
     private void loginAction() {
         String email = Utils.getStringFromEditText(this.ets[Constants.LOGIN_EMAIL_ET_INDEX]).trim();
         String password = Utils.getStringFromEditText(this.ets[Constants.LOGIN_PASSWORD_ET_INDEX]).trim();
-        validateUserData(email, password);
-        this.ets[Constants.LOGIN_EMAIL_ET_INDEX].requestFocus();
-        pb.setVisibility(View.VISIBLE);
-        CredentialsManager.login(email, password);
-        pb.setVisibility(View.GONE);
-    }
-
-    private void validateUserData(String email, String password) {
-        int validationState = Utils.validateLogin(email, password);
-        if(Utils.isAnErrorState(validationState)) {
-            Utils.showText(Utils.getStringFromID(validationState), Toast.LENGTH_LONG);
+        if(validateUserData(email, password)) {
+            pb.setVisibility(View.VISIBLE);
+            CredentialsManager.login(email, password);
+            pb.setVisibility(View.GONE);
         }
     }
 
+    private boolean validateUserData(String email, String password) {
+        int validationState = Utils.validateLogin(email, password);
+        if(Utils.isAnErrorState(validationState)) {
+            Utils.showText(Utils.getStringFromID(validationState), Toast.LENGTH_LONG);
+            showError(validationState);
+            return false;
+        }
+        return true;
+    }
 
+    private void showError(int errorCode) {
+        switch (errorCode) {
+            case R.string.required_email_error:
+                Utils.setErrorOnTextView(this.ets[Constants.LOGIN_EMAIL_ET_INDEX], R.string.required_email_error);
+                this.ets[Constants.LOGIN_EMAIL_ET_INDEX].requestFocus();
+                break;
+            case R.string.invalid_email_error:
+                Utils.setErrorOnTextView(this.ets[Constants.LOGIN_EMAIL_ET_INDEX], R.string.invalid_email_error);
+                this.ets[Constants.LOGIN_EMAIL_ET_INDEX].requestFocus();
+                break;
+            case R.string.required_password_error:
+                Utils.setErrorOnTextView(this.ets[Constants.LOGIN_PASSWORD_ET_INDEX], R.string.required_password_error);
+                this.ets[Constants.LOGIN_PASSWORD_ET_INDEX].requestFocus();
+                break;
+            case  R.string.incorrect_password_length_error:
+                Utils.setErrorOnTextView(this.ets[Constants.LOGIN_PASSWORD_ET_INDEX],R.string.incorrect_password_length_error);
+                this.ets[Constants.LOGIN_PASSWORD_ET_INDEX].requestFocus();
+                break;
+        }
+    }
 }

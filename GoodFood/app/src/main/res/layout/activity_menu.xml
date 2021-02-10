@@ -15,29 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginStart="206dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/title_layout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical|end"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/order_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:contentDescription="@string/order_context_menu"
-                app:srcCompat="@drawable/ic_launcher_background" />
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/plates_layout"
             android:layout_width="match_parent"

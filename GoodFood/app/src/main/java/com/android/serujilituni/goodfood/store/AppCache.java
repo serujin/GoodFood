@@ -2,14 +2,17 @@ package com.android.serujilituni.goodfood.store;
 
 import android.content.Context;
 
+import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.model.Restaurant;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AppCache {
 
     private static AppCache instance;
-    private ArrayList<Restaurant> restaurants;
+    private List<Restaurant> restaurants;
+    private List<Plate> currentOrder;
     private Context context;
 
     public static AppCache getInstance(){
@@ -19,14 +22,17 @@ public class AppCache {
         return AppCache.instance;
     }
 
-    public ArrayList<Restaurant> getRestaurants() {
+    private AppCache() {
+        this.restaurants = new ArrayList<>();
+        this.currentOrder = new ArrayList<>();
+    }
+
+    public List<Restaurant> getRestaurants() {
         return this.restaurants;
     }
 
-    public void addRestaurant(Restaurant r) {
-        if(!this.restaurants.contains(r)){
-            this.restaurants.add(r);
-        }
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
     }
 
     public Context getContext() {

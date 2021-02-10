@@ -9,6 +9,8 @@ import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivi
 import com.android.serujilituni.goodfood.model.User;
 import com.android.serujilituni.goodfood.store.DBManager;
 import com.android.serujilituni.goodfood.utils.Utils;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CredentialsManager {
@@ -34,6 +36,16 @@ public class CredentialsManager {
             } else {
                 Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
             }
+        });
+    }
+
+    public static void resetPassword(String email) {
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener((OnCompleteListener) task -> {
+            String msg = Utils.getStringFromID(R.string.reset_error);
+            if(task.isSuccessful()) {
+                msg = Utils.getStringFromID(R.string.check_reset_email);
+            }
+            Utils.showText(msg, Toast.LENGTH_LONG);
         });
     }
 

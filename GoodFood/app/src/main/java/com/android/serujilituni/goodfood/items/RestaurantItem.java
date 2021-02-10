@@ -1,15 +1,19 @@
 package com.android.serujilituni.goodfood.items;
 
+import android.graphics.drawable.Drawable;
+
+import com.android.serujilituni.goodfood.utils.Utils;
+
 public class RestaurantItem {
-    private int imageResource;
+    private Drawable imageResource;
     private String restaurantName;
 
     public RestaurantItem(int imageResource, String restaurantName) {
-        this.imageResource = imageResource;
+        this.imageResource = Utils.getDrawableFromID(imageResource);
         this.restaurantName = restaurantName;
     }
 
-    public int getImageResource() {
+    public Drawable getImageResource() {
         return imageResource;
     }
 

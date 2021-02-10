@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Order {
     private String address;
-    private Restaurant restaurant;
+    private String restaurant;
     private List<Plate> plates;
     private LocalDateTime dateTime;
 
     public Order() {
     }
 
-    public Order(String address, Restaurant restaurant, List<Plate> plates, LocalDateTime dateTime) {
+    public Order(String address, String restaurant, List<Plate> plates, LocalDateTime dateTime) {
         this.address = address;
         this.restaurant = restaurant;
         this.plates = plates;
@@ -27,11 +27,11 @@ public class Order {
         this.address = address;
     }
 
-    public Restaurant getRestaurant() {
+    public String getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
+    public void setRestaurant(String restaurant) {
         this.restaurant = restaurant;
     }
 
