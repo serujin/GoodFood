@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.activities.login.LoginActivity;
+import com.android.serujilituni.goodfood.activities.menu.MenuActivity;
+import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteActivity;
+import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.store.AppCache;
 
 public class Utils {
@@ -72,6 +75,21 @@ public class Utils {
         } else {
             Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
         }
+    }
+
+    public static void storeOrderAction(boolean wasSuccessful) {
+        if(wasSuccessful) {
+            Utils.showText(Utils.getStringFromID(R.string.successfully_order), Toast.LENGTH_LONG);
+            Utils.changeActivity(OrderCompleteActivity.class);
+        } else {
+            Utils.showText(Utils.getStringFromID(R.string.order_error), Toast.LENGTH_LONG);
+        }
+    }
+
+    public static void changeToRestaurantMenu(int index) {
+        Intent intent = new Intent(AppCache.getInstance().getContext(), MenuActivity.class);
+        intent.putExtra(Constants.MENU_EXTRA_INTENT, index);
+        AppCache.getInstance().getContext().startActivity(intent);
     }
 
     public static int[] getIntArrayFromID(int id) {

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.items.RestaurantItem;
+import com.android.serujilituni.goodfood.utils.Utils;
 
 import java.util.List;
 
@@ -47,12 +48,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
         public RestaurantViewHolder(View v) {
             super(v);
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d("ELEMENT", "Element " + RestaurantViewHolder.this.getAdapterPosition() + " clicked.");
-                }
-            });
+            v.setOnClickListener(view -> Utils.changeToRestaurantMenu(RestaurantViewHolder.this.getAdapterPosition()));
             this.imageView = v.findViewById(R.id.restaurant_logo);
             this.textView = v.findViewById(R.id.restaurant_name);
         }

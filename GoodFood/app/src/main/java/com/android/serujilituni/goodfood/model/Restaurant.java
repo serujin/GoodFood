@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Restaurant {
     private String name;
-    private String address;
+    private List<Double> location;
     private List<Plate> plates;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, List<Plate> plates) {
+    public Restaurant(String name, List<Double> location, List<Plate> plates) {
         this.name = name;
-        this.address = address;
+        this.location = location;
         this.plates = plates;
     }
 
@@ -24,12 +24,12 @@ public class Restaurant {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public List<Double> getAddress() {
+        return location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(List<Double> address) {
+        this.location = address;
     }
 
     public List<Plate> getPlates() {

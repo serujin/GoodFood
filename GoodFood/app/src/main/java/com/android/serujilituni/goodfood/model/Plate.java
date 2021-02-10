@@ -2,15 +2,13 @@ package com.android.serujilituni.goodfood.model;
 
 public class Plate {
     private String name;
-    private String desc;
     private float price;
 
     public Plate() {
     }
 
-    public Plate(String name, String desc, float price) {
+    public Plate(String name, float price) {
         this.name = name;
-        this.desc = desc;
         this.price = price;
     }
 
@@ -20,14 +18,6 @@ public class Plate {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 
     public float getPrice() {

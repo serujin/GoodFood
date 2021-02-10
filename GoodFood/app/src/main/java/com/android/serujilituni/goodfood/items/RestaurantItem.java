@@ -5,17 +5,13 @@ import android.graphics.drawable.Drawable;
 import com.android.serujilituni.goodfood.utils.Utils;
 
 public class RestaurantItem {
-    private int index;
     private Drawable imageResource;
     private String restaurantName;
 
-    public RestaurantItem(int index, int imageResource, String restaurantName) {
-        this.index = index;
+    public RestaurantItem(int imageResource, String restaurantName) {
         this.imageResource = Utils.getDrawableFromID(imageResource);
         this.restaurantName = restaurantName;
     }
-
-    public int getIndex() {return index;}
 
     public Drawable getImageResource() {
         return imageResource;
