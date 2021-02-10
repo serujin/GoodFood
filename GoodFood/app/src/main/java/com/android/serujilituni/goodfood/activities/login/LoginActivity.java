@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.serujilituni.goodfood.R;
-import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.model.Restaurant;
 import com.android.serujilituni.goodfood.store.AppCache;
 import com.android.serujilituni.goodfood.utils.Utils;
@@ -19,12 +18,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurants);
-        /**
+        setContentView(R.layout.activity_login);
+
         AppCache.getInstance().setContext(this);
+
+        //Utils.changeActivity(.class);
+
         new LoginController(getTextViews(), getEditTexts(), findViewById(R.id.login_btn), findViewById(R.id.progress_bar));
 
-         * Test Data
+        /*** Test Data
          List<Restaurant> restaurants = new ArrayList<>();
          List<Plate> plates = new ArrayList<>();
          List<Plate> orderPlates = new ArrayList<>();

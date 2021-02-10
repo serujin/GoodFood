@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GoodFood">
-        <activity android:name=".activities.forgotpassword.ResetPasswordActivity"></activity>
+        <activity
+            android:name=".activities.tests.Drawer"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/Theme.GoodFood.NoActionBar"></activity>
+        <activity android:name=".activities.forgotpassword.ResetPasswordActivity" />
         <activity android:name=".activities.ordercomplete.OrderCompleteActivity" />
         <activity android:name=".activities.ordersummary.OrderSummaryActivity" />
         <activity android:name=".activities.menu.MenuActivity" />
