@@ -21,15 +21,28 @@ public class Constants {
 
     public static final int[] RESTAURANTS_DRAWABLES = new int[] {
             R.drawable.mcdonalds,
-            R.drawable.kebab,
+            R.drawable.kebab_restaurant,
             R.drawable.goikogrill,
             R.drawable.tacobell,
             R.drawable._00mon,
             R.drawable.telepizza,
             R.drawable.fosters,
             R.drawable.udon,
-            R.drawable.kagura,
-            R.drawable.superbestia
+            R.drawable.tagli_restaurante,
+            R.drawable.kfc_restaurna
+    };
+
+    public static final int[][] PLATES_DRAWABLES = new int[][] {
+            {R.drawable.cbo, R.drawable.double_bacon, R.drawable.big_mac, R.drawable.mcpollo, R.drawable.chicken_cheese},
+            {R.drawable.durum, R.drawable.ensalada_kebab, R.drawable.kebab, R.drawable.patatas, R.drawable.fingers},
+            {R.drawable.kiki, R.drawable.yankee, R.drawable.pigma, R.drawable.chipotle, R.drawable.goiko},
+            {R.drawable.gsb, R.drawable.chicken, R.drawable.quesarito, R.drawable.quesadilla, R.drawable.crunchy},
+            {R.drawable.chori, R.drawable.pulled, R.drawable.pollo, R.drawable.cabra, R.drawable.lechuga},
+            {R.drawable.libra, R.drawable.gourment, R.drawable.nachos, R.drawable.carbonara, R.drawable.crispy},
+            {R.drawable.cesar, R.drawable.director, R.drawable.pork, R.drawable.smoked, R.drawable.ribs},
+            {R.drawable.gyoza, R.drawable.curry, R.drawable.spicy, R.drawable.chicken_yaki, R.drawable.nabe},
+            {R.drawable.foie, R.drawable.canneloni, R.drawable.insalata, R.drawable.insa_tagli, R.drawable.pepe},
+            {R.drawable.infame, R.drawable.bbc, R.drawable.wrap, R.drawable.double_krucnh, R.drawable.kfc_menu}
     };
 
 }

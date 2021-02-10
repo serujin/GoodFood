@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.adapters.PlateAdapter;
+import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.items.PlateItem;
 import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.store.AppCache;
@@ -31,7 +32,7 @@ public class MenuController {
         List<Plate> plates = AppCache.getInstance().getRestaurants().get(restaurantIndex).getPlates();
         List<PlateItem> items = new ArrayList<>();
         for (int i = 0; i < plates.size(); i++) {
-            items.add(new PlateItem(Utils.getDrawableFromID(R.drawable.googleg_disabled_color_18), plates.get(i).getName(), plates.get(i).getPrice()));
+            items.add(new PlateItem(Utils.getDrawableFromID(Constants.PLATES_DRAWABLES[restaurantIndex][i]), plates.get(i).getName(), plates.get(i).getPrice()));
         }
         return items;
     }
