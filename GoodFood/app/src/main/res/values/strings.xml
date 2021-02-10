@@ -49,7 +49,7 @@
     <string name="quantity">Quantity:</string>
     <string name="price">Price:</string>
     <string name="complete_order">Complete order</string>
-<<<<<<< HEAD
+
     <string name="title_activity_drawer">Drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -62,8 +62,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="order_summary">Order Summary</string>
-=======
+
     <string name="plate_img">Plate_img</string>
     <string name="money">€</string>
->>>>>>> main
+
 </resources>
