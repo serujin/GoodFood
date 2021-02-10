@@ -19,25 +19,27 @@
             android:background="@color/black"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="324dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
                 android:text="@string/app_name"
                 android:textColor="@color/white"
-                android:textSize="15dp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/imageMenu"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
                 android:contentDescription="@string/app_name"
+                android:paddingRight="15dp"
                 android:src="@drawable/ic_menu"
                 app:tint="@color/white" />
         </LinearLayout>
@@ -51,20 +53,54 @@
             tools:listitem="@layout/restaurant_item">
 
         </androidx.recyclerview.widget.RecyclerView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
+        android:id="@+id/temporal_order_nv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
 
-        android:layout_gravity="end">
+        android:layout_gravity="center_horizontal|end">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recyclerView"/>
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Order Summary"
+                android:textSize="25sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/temporal_order_rv"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_weight="1"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="70dp"
+                android:paddingBottom="20dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/finalize_order_btn"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:text="Finalize Order"
+                android:textSize="17sp" />
+        </LinearLayout>
 
     </com.google.android.material.navigation.NavigationView>
-
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -13,6 +13,7 @@ import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.activities.menu.MenuActivity;
 import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
+import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.store.AppCache;
 
 public class Utils {
@@ -75,6 +76,10 @@ public class Utils {
         } else {
             Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
         }
+    }
+
+    public static void addPlateToOrder(Plate plate) {
+        //AppCache.getInstance().
     }
 
     public static void storeOrderAction(boolean wasSuccessful) {

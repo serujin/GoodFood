@@ -2,6 +2,7 @@ package com.android.serujilituni.goodfood.store;
 
 import android.content.Context;
 
+import com.android.serujilituni.goodfood.items.PlateItem;
 import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.model.Restaurant;
 
@@ -12,7 +13,7 @@ public class AppCache {
 
     private static AppCache instance;
     private List<Restaurant> restaurants;
-    private List<Plate> currentOrder;
+    private List<PlateItem> currentOrder;
     private Context context;
 
     public static AppCache getInstance(){
@@ -25,6 +26,16 @@ public class AppCache {
     private AppCache() {
         this.restaurants = new ArrayList<>();
         this.currentOrder = new ArrayList<>();
+    }
+
+    public void addPlate(PlateItem plate) {
+        if(this.currentOrder.contains(plate)) {
+           // this.currentOrder.get(plate).setPlateQuantity();
+        }
+    }
+
+    private void changePlateQuantity(PlateItem plate, int quantity) {
+
     }
 
     public List<Restaurant> getRestaurants() {
