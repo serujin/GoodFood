@@ -1,5 +1,7 @@
 package com.android.serujilituni.goodfood.constants;
 
+import com.android.serujilituni.goodfood.R;
+
 public class Constants {
     //RESTAURANT INFO
     private static final String RESTAURANT_ID = "restaurant_id";
@@ -32,5 +34,19 @@ public class Constants {
     public static final int REGISTER_NAME_ET_INDEX = 3;
 
     public static final String DB_USERS_REFERENCE = "users";
+    public static final String DB_RESTAURANTS_REFERENCE = "restaurants";
+
+    public static final int[] RESTAURANTS_DRAWABLES = new int[] {
+            R.drawable.mcdonalds,
+            R.drawable.kebab,
+            R.drawable.goikogrill,
+            R.drawable.tacobell,
+            R.drawable._00mon,
+            R.drawable.telepizza,
+            R.drawable.fosters,
+            R.drawable.udon,
+            R.drawable.kagura,
+            R.drawable.superbestia
+    };
 
 }

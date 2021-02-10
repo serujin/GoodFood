@@ -64,22 +64,4 @@ public class LoginActivity extends AppCompatActivity {
                 findViewById(R.id.login_user_pass)
         };
     }
-
-    protected ValueEventListener sendEvent() {
-        return new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.getValue() != null) {
-
-                    for (DataSnapshot child : snapshot.getChildren()) {
-                        Restaurant r = child.getValue(Restaurant.class);
-                        AppCache.getInstance().addRestaurant(r);
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
-        };
-    }
-
 }

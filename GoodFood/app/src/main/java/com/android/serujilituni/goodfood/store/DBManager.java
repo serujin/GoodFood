@@ -1,10 +1,20 @@
 package com.android.serujilituni.goodfood.store;
 
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
+import com.android.serujilituni.goodfood.model.Restaurant;
 import com.android.serujilituni.goodfood.model.User;
 import com.android.serujilituni.goodfood.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class DBManager {
 
@@ -36,11 +46,30 @@ public class DBManager {
     public void setRestaurants(List<Restaurant> restaurants) {
         this.db.child("restaurants").setValue(restaurants);
     }
-
-    public void getRestaurants(ValueEventListener vel) {
-        this.db.child("restaurants").addListenerForSingleValueEvent(vel);
-    }
  */
+    public void updateRestaurants() {
+        this.db.getReference(Constants.DB_RESTAURANTS_REFERENCE).addListenerForSingleValueEvent(getRestaurantEvent());
+    }
+
+    private ValueEventListener getRestaurantEvent() {
+        return new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue() != null) {
+                    for (DataSnapshot child : snapshot.getChildren()) {
+                        Restaurant r = child.getValue(Restaurant.class);
+                        AppCache.getInstance().addRestaurant(r);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Utils.showText(Utils.getStringFromID(R.string.loading_restaurant_error), Toast.LENGTH_LONG);
+                Utils.changeActivity(LoginActivity.class);
+            }
+        };
+    }
+
 }
 
 

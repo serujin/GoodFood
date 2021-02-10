@@ -37,6 +37,7 @@
     <string name="check_your_email">Check your email to verify account and try to login again</string>
     <string name="check_reset_email">Check your email to reset your password</string>
     <string name="reset_error">Enter an already registered email!</string>
+    <string name="loading_restaurant_error">Couldn\'t load restaurants try again later</string>
     <string name="credentials_error">Failed to login! Check credentials</string>
     <string name="register_error">Failed to Register!</string>
 
@@ -46,4 +47,5 @@
     <string name="quantity">Quantity:</string>
     <string name="price">Price:</string>
     <string name="complete_order">Complete order</string>
+    <string name="plate_img">Plate_img</string>
 </resources>

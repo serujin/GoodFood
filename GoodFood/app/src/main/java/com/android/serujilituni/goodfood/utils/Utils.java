@@ -2,6 +2,7 @@ package com.android.serujilituni.goodfood.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.util.Patterns;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -71,6 +72,18 @@ public class Utils {
         } else {
             Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
         }
+    }
+
+    public static int[] getIntArrayFromID(int id) {
+        return AppCache.getInstance().getContext().getResources().getIntArray(id);
+    }
+
+    public static String[] getStringArrayFromID(int id) {
+        return AppCache.getInstance().getContext().getResources().getStringArray(id);
+    }
+
+    public static Drawable getDrawableFromID(int id) {
+        return AppCache.getInstance().getContext().getResources().getDrawable(id);
     }
 
     public static void setErrorOnTextView(TextView tv, int errorcode) {
