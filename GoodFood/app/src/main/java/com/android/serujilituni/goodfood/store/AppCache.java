@@ -60,7 +60,7 @@ public class AppCache {
         for(int i = 0; i < currentOrder.size(); i++) {
             if(currentOrder.get(i).getName().equals(plate.getName())) {
                 int quantityData = currentOrder.get(i).getQuantity() + quantity;
-                if(quantityData > -1) {
+                if(quantityData > 0) {
                     currentOrder.get(i).setQuantity(quantityData);
                 } else {
                     currentOrder.remove(i);
