@@ -15,6 +15,7 @@ public class AppCache {
     private static AppCache instance;
     private List<Restaurant> restaurants;
     private List<TemporalPlateItem> currentOrder;
+    private String address;
     private int currentRestaurant;
     private Context context;
 
@@ -28,6 +29,7 @@ public class AppCache {
     private AppCache() {
         this.restaurants = new ArrayList<>();
         this.currentOrder = new ArrayList<>();
+        this.address = "AAAAAAAAAAAAAAAWDDDDDDDDDAAAAAAWDDDDAAAAADDDDAAADDDDAAADDDDAAAADDDDAADDADA";
     }
 
     public void addPlate(TemporalPlateItem plate) {
@@ -95,5 +97,13 @@ public class AppCache {
 
     public void setCurrentRestaurant(int currentRestaurant) {
         this.currentRestaurant = currentRestaurant;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

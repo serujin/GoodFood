@@ -171,14 +171,6 @@ public class Utils {
         AppCache.getInstance().getContext().startActivity(intent);
     }
 
-    public static int[] getIntArrayFromID(int id) {
-        return AppCache.getInstance().getContext().getResources().getIntArray(id);
-    }
-
-    public static String[] getStringArrayFromID(int id) {
-        return AppCache.getInstance().getContext().getResources().getStringArray(id);
-    }
-
     public static Drawable getDrawableFromID(int id) {
         return AppCache.getInstance().getContext().getResources().getDrawable(id);
     }
@@ -226,5 +218,14 @@ public class Utils {
     public static float getTotalPrice() {
         //TODO: IMPLEMENT THIS (RETURN €)
         return -1;
+    }
+
+    public static boolean isAddressUpdated(EditText address) {
+        String addressData = address.getText().toString().trim();
+        if(AppCache.getInstance().getAddress().trim().equals(addressData)) {
+            return false;
+        }
+        AppCache.getInstance().setAddress(addressData);
+        return true;
     }
 }

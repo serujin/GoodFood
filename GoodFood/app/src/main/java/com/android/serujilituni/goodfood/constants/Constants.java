@@ -13,8 +13,9 @@ public class Constants {
     public static final int REGISTER_CONFIRMED_PASSWORD_ET_INDEX = 2;
     public static final int REGISTER_NAME_ET_INDEX = 3;
 
-    public static final int ORDER_SUMMARY_FINALIZE_BTN_INDEX = 0;
-    public static final int ORDER_SUMMARY_CANCEL_BTN_INDEX = 1;
+    public static final int ORDER_SUMMARY_REFRESH_BTN_INDEX = 0;
+    public static final int ORDER_SUMMARY_FINALIZE_BTN_INDEX = 1;
+    public static final int ORDER_SUMMARY_CANCEL_BTN_INDEX = 2;
     public static final int ORDER_SUMMARY_DISTANCE_TV = 0;
     public static final int ORDER_SUMMARY_PRICE_TV = 1;
     public static final int ORDER_SUMMARY_DELIVER_TV = 2;

@@ -1,7 +1,10 @@
 package com.android.serujilituni.goodfood.activities.ordersummary;
 
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,18 +18,28 @@ import com.android.serujilituni.goodfood.utils.Utils;
 
 public class OrderSummaryController {
     private Button[] buttons;
+    private EditText address;
+    private ImageButton location;
     private RecyclerView orderRv;
     private TextView[] tvs;
 
-    public OrderSummaryController(Button[] buttons, RecyclerView orderRv, TextView[] tvs) {
+    public OrderSummaryController(Button[] buttons, EditText address, ImageButton location, RecyclerView orderRv, TextView[] tvs) {
         this.buttons = buttons;
+        this.address = address;
+        this.location = location;
         this.orderRv = orderRv;
         this.tvs = tvs;
+        initComponents();
+    }
+
+    private void initComponents() {
         initButtons();
         initOrderRV();
     }
 
     private void initButtons() {
+        initLocationButton();
+        initRefreshButton();
         initFinalizeAndPayButton();
         initCancelButton();
     }
@@ -37,16 +50,37 @@ public class OrderSummaryController {
         this.orderRv.setHasFixedSize(true);
     }
 
-    private void initTextViews() {
+    private void showInformation() {
         this.tvs[Constants.ORDER_SUMMARY_DISTANCE_TV].setText(String.valueOf(Utils.getOrderDistance()));
         this.tvs[Constants.ORDER_SUMMARY_PRICE_TV].setText(String.valueOf(Utils.getTotalMoneyOfCurrentOrder()));
         this.tvs[Constants.ORDER_SUMMARY_DELIVER_TV].setText(String.valueOf(Utils.getDeliverPrice()));
         this.tvs[Constants.ORDER_SUMMARY_FINAL_PRICE_TV].setText(String.valueOf(Utils.getTotalPrice()));
     }
 
+    private void showUserLocation() {
+        this.address.setText(Utils.getUserLocation());
+    }
+
+    private void initLocationButton() {
+        this.location.setOnClickListener(view -> {showUserLocation(); showInformation();});
+    }
+
+    private void initRefreshButton() {
+        this.buttons[Constants.ORDER_SUMMARY_REFRESH_BTN_INDEX]
+                .setOnClickListener(view -> showInformation());
+    }
+
     private void initFinalizeAndPayButton() {
         this.buttons[Constants.ORDER_SUMMARY_FINALIZE_BTN_INDEX]
-                .setOnClickListener(view -> Utils.changeActivity(OrderCompleteActivity.class));
+                .setOnClickListener(view -> finalizeAndPayAction());
+    }
+
+    private void finalizeAndPayAction() {
+        if(Utils.isAddressUpdated(address)) {
+            Utils.changeActivity(OrderCompleteActivity.class);
+        } else {
+            Utils.showText("You need to refresh the address with the button", Toast.LENGTH_LONG);
+        }
     }
 
     private void initCancelButton() {

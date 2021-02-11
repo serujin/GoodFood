@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.serujilituni.goodfood.R;
@@ -19,13 +20,16 @@ public class OrderSummaryActivity extends AppCompatActivity {
         new OrderSummaryController(
                 getButtons(),
                 findViewById(R.id.address_info_et),
+                findViewById(R.id.get_location_img_btn),
                 findViewById(R.id.plates_rv_layout), 
                 getTextviews()
         );
+
     }
 
     private Button[] getButtons() {
         return new Button[] {
+                findViewById(R.id.refresh_btn),
                 findViewById(R.id.pay_btn),
                 findViewById(R.id.cancel_btn)
         };

@@ -71,5 +71,11 @@
 
     <string name="plate_img">Plate_img</string>
     <string name="money">€</string>
+    <string name="refresh_address_info">Refresh address info</string>
+    <string name="enter_the_deliver_address">Enter the deliver address</string>
+    <string name="km">km</string>
+    <string name="equal">=</string>
+    <string name="add">+</string>
+    <string name="money_deliver">€ (deliver)</string>
 
 </resources>
