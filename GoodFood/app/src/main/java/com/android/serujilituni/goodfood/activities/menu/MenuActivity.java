@@ -23,7 +23,8 @@ public class MenuActivity extends AppCompatActivity {
                 findViewById(R.id.temporal_order_rv),
                 findViewById(R.id.open_menu_btn),
                 findViewById(R.id.drawerLayout),
-                findViewById(R.id.finalize_order_btn)
+                findViewById(R.id.finalize_order_btn),
+                findViewById(R.id.total_price_temporal_tv)
         );
     }
 

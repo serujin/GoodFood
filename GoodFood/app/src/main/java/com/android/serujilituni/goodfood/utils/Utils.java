@@ -207,4 +207,24 @@ public class Utils {
     public static String getStringFromEditText(EditText et) {
         return et.getText().toString();
     }
+
+    public static String getUserLocation() {
+        //TODO: IMPLEMENT THIS (RETURN ADDRESS)
+        return "TODO";
+    }
+
+    public static float getOrderDistance() {
+        //TODO: IMPLEMENT THIS (RETURN KM)
+        return -1;
+    }
+
+    public static float getDeliverPrice() {
+        //TODO: IMPLEMENT THIS (RETURN €)
+        return -1;
+    }
+
+    public static float getTotalPrice() {
+        //TODO: IMPLEMENT THIS (RETURN €)
+        return -1;
+    }
 }

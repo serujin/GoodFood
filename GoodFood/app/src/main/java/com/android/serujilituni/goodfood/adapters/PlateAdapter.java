@@ -65,7 +65,7 @@ public class PlateAdapter extends RecyclerView.Adapter<PlateAdapter.PlateViewHol
         String name = holder.getTitleTextView().getText().toString();
         int plateQuantity = Integer.parseInt(holder.getQuantityTextView().getText().toString()) + sign;
         float price = Float.parseFloat(holder.getPriceTextView().getText().toString());
-        if(sign < 0 && plateQuantity != 0) {
+        if(sign < 0 && plateQuantity != -1) {
             AppCache.getInstance().subPlate(new TemporalPlateItem(name, plateQuantity, price));
         } else if (sign > 0) {
             AppCache.getInstance().addPlate(new TemporalPlateItem(name, plateQuantity, price));
