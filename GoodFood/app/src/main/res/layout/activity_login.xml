@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,8 +8,6 @@
     tools:context=".activities.login.LoginActivity"
     android:background="#FCEABA"
     >
-
-
 
     <LinearLayout
         android:id="@+id/main"
@@ -35,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_logo_desc"
                 android:src="@drawable/goodfoodlogo" />
+
         </LinearLayout>
 
         <Space
@@ -119,36 +119,6 @@
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <LinearLayout
-            android:id="@+id/google_layout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/google_login"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/google_login"
-                android:src="@drawable/common_google_signin_btn_icon_dark" />
-        </LinearLayout>
-
     </LinearLayout>
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleLarge"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

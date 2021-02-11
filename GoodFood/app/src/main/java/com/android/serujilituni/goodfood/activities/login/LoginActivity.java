@@ -14,8 +14,6 @@ import com.android.serujilituni.goodfood.store.DBManager;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private LocationManager lm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

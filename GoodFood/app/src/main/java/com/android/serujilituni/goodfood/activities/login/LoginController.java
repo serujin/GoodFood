@@ -1,5 +1,7 @@
 package com.android.serujilituni.goodfood.activities.login;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,13 +20,11 @@ public class LoginController {
     private TextView[] tvs;
     private EditText[] ets;
     private Button loginBtn;
-    private ProgressBar pb;
 
     public LoginController(TextView[] tvs, EditText[] ets, Button loginBtn, ProgressBar pb) {
         this.tvs = tvs;
         this.ets = ets;
         this.loginBtn = loginBtn;
-        this.pb = pb;
         initComponents();
     }
 
@@ -52,11 +52,15 @@ public class LoginController {
         String email = Utils.getStringFromEditText(this.ets[Constants.LOGIN_EMAIL_ET_INDEX]).trim();
         String password = Utils.getStringFromEditText(this.ets[Constants.LOGIN_PASSWORD_ET_INDEX]).trim();
         if(validateUserData(email, password)) {
-            pb.setVisibility(View.VISIBLE);
-            CredentialsManager.login(email, password);
-            pb.setVisibility(View.GONE);
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    CredentialsManager.login(email, password);
+                }
+            }, 500);
         }
     }
+
 
     private boolean validateUserData(String email, String password) {
         int validationState = Utils.validateLogin(email, password);
