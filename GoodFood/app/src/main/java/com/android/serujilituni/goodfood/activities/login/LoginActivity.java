@@ -2,9 +2,23 @@ package com.android.serujilituni.goodfood.activities.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.serujilituni.goodfood.R;
 
@@ -19,8 +33,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LocationListener {
+
+    private LocationManager lm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +46,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         AppCache.getInstance().setContext(this);
         new LoginController(getTextViews(), getEditTexts(), findViewById(R.id.login_btn), findViewById(R.id.progress_bar));
+
+        if(ContextCompat.checkSelfPermission(AppCache.getInstance().getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            },100);
+        }
+
+        getLocation();
+
+
+
 
         /*** Test Data
 
@@ -109,6 +139,19 @@ public class LoginActivity extends AppCompatActivity {
  */
     }
 
+    @SuppressLint("MissingPermission")
+    private void getLocation() {
+        try{
+            this.lm = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+            this.lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,5, (LocationListener) AppCache.getInstance().getContext());
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
     private TextView[] getTextViews() {
         return new TextView[] {
                 findViewById(R.id.register_tv),
@@ -121,5 +164,39 @@ public class LoginActivity extends AppCompatActivity {
                 findViewById(R.id.login_user_email),
                 findViewById(R.id.login_user_pass)
         };
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        Toast.makeText(this,"Latitud: "+location.getLatitude()+", Longitud: "+location.getLongitude(),Toast.LENGTH_LONG).show();
+
+        try{
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+
+            String address = addresses.get(0).getAddressLine(0);
+
+            Toast.makeText(this,address,Toast.LENGTH_LONG).show();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
     }
 }

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.login.LoginActivity">
+    tools:context=".activities.login.LoginActivity"
+    android:background="#FCEABA"
+    >
 
 
 
@@ -49,10 +51,12 @@
                 android:id="@+id/login_user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+
+                android:layout_weight=".55"
                 android:autofillHints=""
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
-                android:gravity="center_vertical"
+                android:gravity="center|center_vertical"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress" />
 
@@ -60,10 +64,11 @@
                 android:id="@+id/login_user_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight=".55"
                 android:autofillHints=""
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
-                android:gravity="center_vertical"
+                android:gravity="center|center_vertical"
                 android:hint="@string/password"
                 android:inputType="textPassword" />
         </LinearLayout>
@@ -76,17 +81,21 @@
             android:id="@+id/button_layout"
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/login_btn"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/cardview_dark_background"
+
                 android:text="@string/login" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="fill_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="2">
 

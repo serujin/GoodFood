@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FCEABA"
     tools:context=".activities.ordersummary.OrderSummaryActivity">
 
     <LinearLayout
@@ -212,11 +213,13 @@
                 android:id="@+id/pay_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/cardview_dark_background"
                 android:text="@string/finalize_and_pay" />
 
             <Button
                 android:id="@+id/cancel_btn"
                 android:layout_width="match_parent"
+                android:backgroundTint="@color/cardview_dark_background"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel_order" />
         </LinearLayout>

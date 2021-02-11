@@ -77,5 +77,6 @@
     <string name="equal">=</string>
     <string name="add">+</string>
     <string name="money_deliver">€ (deliver)</string>
+    <string name="terms_advice">By registering we assume that you accept our terms and conditions</string>
 
 </resources>
