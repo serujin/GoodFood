@@ -5,10 +5,10 @@
 
 
     <LinearLayout
+        android:background="@drawable/separator_tv"
         android:id="@+id/plate"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EFE8D5"
         android:orientation="vertical"
         android:weightSum="0">
 
