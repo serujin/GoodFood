@@ -25,14 +25,14 @@ public class TemporalPlateAdapter extends RecyclerView.Adapter<TemporalPlateAdap
     @Override
     public TemporalPlateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.restaurant_item, parent, false);
+                .inflate(R.layout.temporal_order_item, parent, false);
         return new TemporalPlateViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TemporalPlateViewHolder holder, int position) {
         holder.getName().setText(mDataSet.get(position).getName());
-        holder.getQuantity().setText(mDataSet.get(position).getQuantity());
+        holder.getQuantity().setText(String.valueOf(mDataSet.get(position).getQuantity()));
         holder.getPrice().setText(String.valueOf(mDataSet.get(position).getPrice()));
     }
 
@@ -48,7 +48,6 @@ public class TemporalPlateAdapter extends RecyclerView.Adapter<TemporalPlateAdap
 
         public TemporalPlateViewHolder(View v) {
             super(v);
-            v.setOnClickListener(view -> Log.d("ELEMENT", "Element " + getAdapterPosition() + " clicked."));
             this.name = v.findViewById(R.id.plate_name_info);
             this.quantity = v.findViewById(R.id.plate_quantity_info);
             this.price = v.findViewById(R.id.plate_price_info);

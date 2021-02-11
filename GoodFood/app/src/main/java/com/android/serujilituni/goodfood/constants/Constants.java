@@ -13,6 +13,9 @@ public class Constants {
     public static final int REGISTER_CONFIRMED_PASSWORD_ET_INDEX = 2;
     public static final int REGISTER_NAME_ET_INDEX = 3;
 
+    public static final int ORDER_SUMMARY_FINALIZE_BTN_INDEX = 0;
+    public static final int ORDER_SUMMARY_CANCEL_BTN_INDEX = 1;
+
     public static final String DB_USERS_REFERENCE = "users";
     public static final String DB_RESTAURANTS_REFERENCE = "restaurants";
     public static final String DB_ORDER_REFERENCE = "orders";
