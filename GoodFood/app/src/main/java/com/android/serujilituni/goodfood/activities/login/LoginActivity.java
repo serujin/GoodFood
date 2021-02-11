@@ -24,15 +24,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         DBManager.getInstance().updateRestaurants();
         setContentView(R.layout.activity_login);
-
         AppCache.getInstance().setContext(this);
-
-        //Utils.changeActivity(.class);
-
         new LoginController(getTextViews(), getEditTexts(), findViewById(R.id.login_btn), findViewById(R.id.progress_bar));
 
         /*** Test Data

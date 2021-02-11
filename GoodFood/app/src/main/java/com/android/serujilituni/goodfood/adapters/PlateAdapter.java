@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.items.PlateItem;
+import com.android.serujilituni.goodfood.items.TemporalPlateItem;
+import com.android.serujilituni.goodfood.store.AppCache;
 
 import java.util.List;
 
@@ -41,7 +43,10 @@ public class PlateAdapter extends RecyclerView.Adapter<PlateAdapter.PlateViewHol
     }
 
     private void initListener(PlateViewHolder holder, ImageButton button, int change) {
-        button.setOnClickListener(view -> updateUI(holder, change));
+        button.setOnClickListener(view -> {
+            PlateAdapter.this.updateOrder(holder, change);
+            PlateAdapter.this.updateUI(holder, change);
+        });
     }
 
     private void updateUI(PlateViewHolder holder, int sign) {
@@ -54,6 +59,17 @@ public class PlateAdapter extends RecyclerView.Adapter<PlateAdapter.PlateViewHol
             quantity += sign;
         }
         holder.getQuantityTextView().setText(String.valueOf(quantity));
+    }
+
+    private void updateOrder(PlateViewHolder holder, int sign) {
+        String name = holder.getTitleTextView().getText().toString();
+        int plateQuantity = Integer.parseInt(holder.getQuantityTextView().getText().toString()) + sign;
+        float price = Float.parseFloat(holder.getPriceTextView().getText().toString());
+        if(sign < 0 && plateQuantity != 0) {
+            AppCache.getInstance().subPlate(new TemporalPlateItem(name, plateQuantity, price));
+        } else if (sign > 0) {
+            AppCache.getInstance().addPlate(new TemporalPlateItem(name, plateQuantity, price));
+        }
     }
 
     @Override

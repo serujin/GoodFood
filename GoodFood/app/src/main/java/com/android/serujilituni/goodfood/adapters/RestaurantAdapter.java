@@ -48,7 +48,12 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
         public RestaurantViewHolder(View v) {
             super(v);
-            v.setOnClickListener(view -> Utils.changeToRestaurantMenu(RestaurantViewHolder.this.getAdapterPosition()));
+            v.setOnClickListener(view -> Utils.changeToRestaurantMenu(
+                    RestaurantViewHolder.this.getAdapterPosition(),
+                    Utils.getStringFromID(R.string.restaurant_confirmation),
+                    Utils.getStringFromID(R.string.yes_confirmation),
+                    Utils.getStringFromID(R.string.no_confirmation)
+            ));
             this.imageView = v.findViewById(R.id.restaurant_logo);
             this.textView = v.findViewById(R.id.restaurant_name);
         }

@@ -5,6 +5,8 @@ import android.widget.Button;
 
 import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
+import com.android.serujilituni.goodfood.constants.Constants;
+import com.android.serujilituni.goodfood.store.AppCache;
 import com.android.serujilituni.goodfood.utils.Utils;
 
 public class OrderSummaryController {
@@ -12,6 +14,7 @@ public class OrderSummaryController {
 
     public OrderSummaryController(Button[] buttons) {
         this.buttons = buttons;
+        initButtons();
     }
 
     private void initButtons() {
@@ -20,21 +23,14 @@ public class OrderSummaryController {
     }
 
     private void initFinalizeAndPayButton() {
-        this.buttons[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utils.changeActivity(OrderCompleteActivity.class);
-            }
-        });
+        this.buttons[Constants.ORDER_SUMMARY_FINALIZE_BTN_INDEX]
+                .setOnClickListener(view -> Utils.changeActivity(OrderCompleteActivity.class));
     }
 
     private void initCancelButton() {
-        this.buttons[1].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO: DELETE ORDER
-                Utils.changeActivity(RestaurantsActivity.class);
-            }
+        this.buttons[Constants.ORDER_SUMMARY_CANCEL_BTN_INDEX].setOnClickListener(view -> {
+            AppCache.getInstance().resetOrder();
+            Utils.changeActivity(RestaurantsActivity.class);
         });
     }
 }

@@ -22,7 +22,6 @@
                 android:id="@+id/plate_name_desc"
                 android:layout_width="65dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="5dp"
                 android:text="@string/plate" />
@@ -31,7 +30,6 @@
                 android:id="@+id/plate_name_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="5dp" />
         </LinearLayout>
@@ -47,7 +45,6 @@
                 android:id="@+id/plate_quantity_desc"
                 android:layout_width="65dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="5dp"
                 android:text="@string/quantity" />
@@ -56,7 +53,6 @@
                 android:id="@+id/plate_quantity_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="5dp" />
         </LinearLayout>
@@ -72,7 +68,6 @@
                 android:id="@+id/plate_price_desc"
                 android:layout_width="65dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="5dp"
                 android:text="@string/price" />
@@ -81,7 +76,6 @@
                 android:id="@+id/plate_price_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="5dp" />
         </LinearLayout>
