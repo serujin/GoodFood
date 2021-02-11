@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.register.RegisterActivity">
-
+    tools:context=".activities.register.RegisterActivity"
+    android:background="#FCEABA">
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleLarge"
@@ -60,10 +60,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:autofillHints=""
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="@string/full_name"
-                android:inputType="textPersonName"
-                android:autofillHints="" />
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/register_user_email"
@@ -71,7 +73,9 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:autofillHints=""
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress" />
 
@@ -81,7 +85,9 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:autofillHints=""
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="@string/password"
                 android:inputType="textPassword" />
 
@@ -91,8 +97,9 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:autofillHints=""
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
-                android:gravity="center_vertical"
+                android:gravity="center|center_vertical"
                 android:hint="@string/confirm_your_password"
                 android:inputType="textPassword" />
         </LinearLayout>
@@ -105,13 +112,24 @@
             android:id="@+id/button_layout"
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/register_btn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cardview_dark_background"
+                android:text="@string/register" />
+
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/register" />
+                android:gravity="center"
+                android:text="@string/terms_advice"
+                android:textColor="#64645E"
+                android:textSize="9sp" />
         </LinearLayout>
 
     </LinearLayout>

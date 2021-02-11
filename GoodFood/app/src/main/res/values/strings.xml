@@ -65,5 +65,6 @@
 
     <string name="plate_img">Plate_img</string>
     <string name="money">€</string>
+    <string name="terms_advice">By registering we asume that you accept our terms and conditions</string>
 
 </resources>

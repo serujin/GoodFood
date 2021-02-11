@@ -5,18 +5,20 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.restaurant.RestaurantsActivity">
+    tools:context=".activities.restaurant.RestaurantsActivity"
+    android:background="#FCEABA">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.restaurant.RestaurantsActivity">
+        tools:context=".activities.restaurant.RestaurantsActivity"
+        android:background="#FCEABA">
 
         <LinearLayout
             android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/black"
+            android:background="#111110"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,8 @@
             android:layout_height="match_parent"
             android:paddingHorizontal="10dp"
             android:paddingTop="70dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"
             tools:listitem="@layout/restaurant_item">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -64,6 +68,7 @@
         android:layout_gravity="center_horizontal|end">
 
         <LinearLayout
+            android:background="#FCEABA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
