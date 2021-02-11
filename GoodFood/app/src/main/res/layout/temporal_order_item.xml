@@ -5,11 +5,12 @@
 
 
     <LinearLayout
-        android:background="@drawable/separator_tv"
         android:id="@+id/plate"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/separator_tv"
         android:orientation="vertical"
+        android:paddingVertical="5dp"
         android:weightSum="0">
 
         <LinearLayout
@@ -23,8 +24,8 @@
                 android:id="@+id/plate_name_desc"
                 android:layout_width="78dp"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="5dp"
                 android:text="@string/plate"
                 android:textSize="17sp" />
 
@@ -32,8 +33,11 @@
                 android:id="@+id/plate_name_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="5dp"
+                android:scrollHorizontally="true"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -48,8 +52,8 @@
                 android:id="@+id/plate_quantity_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="5dp"
                 android:text="@string/quantity"
                 android:textSize="17sp" />
 
@@ -57,8 +61,11 @@
                 android:id="@+id/plate_quantity_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="5dp"
+                android:scrollHorizontally="true"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -73,24 +80,35 @@
                 android:id="@+id/plate_price_desc"
                 android:layout_width="78dp"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="5dp"
                 android:text="@string/price"
                 android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/plate_price_info"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="5dp"
+                android:scrollHorizontally="true"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingHorizontal="5dp"
+                android:scrollHorizontally="true"
+                android:text="@string/money"
                 android:textSize="17sp" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_weight="0" />
-
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

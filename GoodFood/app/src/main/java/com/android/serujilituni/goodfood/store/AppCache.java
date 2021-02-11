@@ -2,11 +2,10 @@ package com.android.serujilituni.goodfood.store;
 
 import android.content.Context;
 
-import com.android.serujilituni.goodfood.items.PlateItem;
 import com.android.serujilituni.goodfood.items.TemporalPlateItem;
-import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.model.Restaurant;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +14,12 @@ public class AppCache {
     private static AppCache instance;
     private List<Restaurant> restaurants;
     private List<TemporalPlateItem> currentOrder;
-    private String address;
+    private String userAddress;
     private int currentRestaurant;
+    private Double[] latAndLong;
     private Context context;
+    public boolean locationSetted;
+    private DecimalFormat formatter;
 
     public static AppCache getInstance(){
         if(AppCache.instance == null) {
@@ -29,7 +31,10 @@ public class AppCache {
     private AppCache() {
         this.restaurants = new ArrayList<>();
         this.currentOrder = new ArrayList<>();
-        this.address = "AAAAAAAAAAAAAAAWDDDDDDDDDAAAAAAWDDDDAAAAADDDDAAADDDDAAADDDDAAAADDDDAADDADA";
+        this.userAddress = "Try again";
+        this.formatter = new DecimalFormat("0.00");
+        this.latAndLong = new Double[2];
+        this.locationSetted = false;
     }
 
     public void addPlate(TemporalPlateItem plate) {
@@ -99,11 +104,23 @@ public class AppCache {
         this.currentRestaurant = currentRestaurant;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUserAddress() {
+        return userAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public DecimalFormat getFormatter() {
+        return formatter;
+    }
+
+    public void setLocation(double lat, double lon) {
+        this.latAndLong = new Double[] {lat, lon};
+    }
+
+    public Double[] getLocation() {
+        return latAndLong;
     }
 }

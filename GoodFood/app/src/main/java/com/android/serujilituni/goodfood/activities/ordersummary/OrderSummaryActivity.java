@@ -18,24 +18,21 @@ public class OrderSummaryActivity extends AppCompatActivity {
         AppCache.getInstance().setContext(this);
         new OrderSummaryController(
                 getButtons(),
-                findViewById(R.id.address_info_et),
-                findViewById(R.id.get_location_img_btn),
                 findViewById(R.id.plates_rv_layout),
-                getTextviews()
+                getTextViews()
         );
-
     }
 
     private Button[] getButtons() {
         return new Button[]{
-                findViewById(R.id.refresh_btn),
                 findViewById(R.id.pay_btn),
                 findViewById(R.id.cancel_btn)
         };
     }
 
-    private TextView[] getTextviews() {
+    private TextView[] getTextViews() {
         return new TextView[]{
+                findViewById(R.id.address_info_tv),
                 findViewById(R.id.distance_info_tv),
                 findViewById(R.id.price_info_tv),
                 findViewById(R.id.price_deliver_info_tv),

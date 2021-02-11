@@ -1,10 +1,9 @@
 package com.android.serujilituni.goodfood.activities.ordersummary;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,23 +12,30 @@ import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteA
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.adapters.TemporalPlateAdapter;
 import com.android.serujilituni.goodfood.constants.Constants;
+import com.android.serujilituni.goodfood.credentials.CredentialsManager;
+import com.android.serujilituni.goodfood.items.TemporalPlateItem;
+import com.android.serujilituni.goodfood.model.Order;
+import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.store.AppCache;
+import com.android.serujilituni.goodfood.store.DBManager;
 import com.android.serujilituni.goodfood.utils.Utils;
+
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderSummaryController {
     private Button[] buttons;
-    private EditText address;
-    private ImageButton location;
     private RecyclerView orderRv;
     private TextView[] tvs;
 
-    public OrderSummaryController(Button[] buttons, EditText address, ImageButton location, RecyclerView orderRv, TextView[] tvs) {
+    public OrderSummaryController(Button[] buttons, RecyclerView orderRv, TextView[] tvs) {
         this.buttons = buttons;
-        this.address = address;
-        this.location = location;
         this.orderRv = orderRv;
         this.tvs = tvs;
         initComponents();
+        showInformation();
     }
 
     private void initComponents() {
@@ -38,8 +44,6 @@ public class OrderSummaryController {
     }
 
     private void initButtons() {
-        initLocationButton();
-        initRefreshButton();
         initFinalizeAndPayButton();
         initCancelButton();
     }
@@ -51,36 +55,38 @@ public class OrderSummaryController {
     }
 
     private void showInformation() {
-        this.tvs[Constants.ORDER_SUMMARY_DISTANCE_TV].setText(String.valueOf(Utils.getOrderDistance()));
-        this.tvs[Constants.ORDER_SUMMARY_PRICE_TV].setText(String.valueOf(Utils.getTotalMoneyOfCurrentOrder()));
-        this.tvs[Constants.ORDER_SUMMARY_DELIVER_TV].setText(String.valueOf(Utils.getDeliverPrice()));
-        this.tvs[Constants.ORDER_SUMMARY_FINAL_PRICE_TV].setText(String.valueOf(Utils.getTotalPrice()));
-    }
-
-    private void showUserLocation() {
-        this.address.setText(Utils.getUserLocation());
-    }
-
-    private void initLocationButton() {
-        this.location.setOnClickListener(view -> {showUserLocation(); showInformation();});
-    }
-
-    private void initRefreshButton() {
-        this.buttons[Constants.ORDER_SUMMARY_REFRESH_BTN_INDEX]
-                .setOnClickListener(view -> showInformation());
+        float distance = Utils.getOrderDistance();
+        float platePrice = Utils.getTotalMoneyOfCurrentOrder();
+        float deliverPrice = Utils.getDeliverPrice();
+        float total = platePrice + deliverPrice;
+        DecimalFormat formatter = AppCache.getInstance().getFormatter();
+        this.tvs[Constants.ORDER_SUMMARY_ADDRESS_TV].setText(AppCache.getInstance().getUserAddress());
+        this.tvs[Constants.ORDER_SUMMARY_DISTANCE_TV].setText(formatter.format(distance));
+        this.tvs[Constants.ORDER_SUMMARY_PRICE_TV].setText(formatter.format(platePrice));
+        this.tvs[Constants.ORDER_SUMMARY_DELIVER_TV].setText(formatter.format(deliverPrice));
+        this.tvs[Constants.ORDER_SUMMARY_FINAL_PRICE_TV].setText(formatter.format(total));
     }
 
     private void initFinalizeAndPayButton() {
         this.buttons[Constants.ORDER_SUMMARY_FINALIZE_BTN_INDEX]
-                .setOnClickListener(view -> finalizeAndPayAction());
+                .setOnClickListener(view -> {
+                    DBManager.getInstance().storeOrder(CredentialsManager.getUserUid(), getOrder());
+                    Utils.changeActivity(OrderCompleteActivity.class);
+                });
     }
 
-    private void finalizeAndPayAction() {
-        if(Utils.isAddressUpdated(address)) {
-            Utils.changeActivity(OrderCompleteActivity.class);
-        } else {
-            Utils.showText("You need to refresh the address with the button", Toast.LENGTH_LONG);
+    private Order getOrder() {
+        List<TemporalPlateItem> plates = AppCache.getInstance().getCurrentOrder();
+        List<Plate> plateToSave = new ArrayList<>();
+        for(TemporalPlateItem item : plates) {
+            plateToSave.add(new Plate(item.getName(), item.getPrice()));
         }
+        return new Order(
+                this.tvs[Constants.ORDER_SUMMARY_ADDRESS_TV].getText().toString(),
+                AppCache.getInstance().getRestaurants().get(AppCache.getInstance().getCurrentRestaurant()).getName(),
+                plateToSave,
+                LocalDateTime.now()
+        );
     }
 
     private void initCancelButton() {

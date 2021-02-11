@@ -49,7 +49,7 @@ public class CredentialsManager {
         });
     }
 
-    private static String getUserUid() {
+    public static String getUserUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 

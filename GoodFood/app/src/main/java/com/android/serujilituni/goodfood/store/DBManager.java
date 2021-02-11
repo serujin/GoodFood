@@ -1,11 +1,17 @@
 package com.android.serujilituni.goodfood.store;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.activities.login.LoginActivity;
+import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.model.Order;
 import com.android.serujilituni.goodfood.model.Plate;
@@ -46,25 +52,21 @@ public class DBManager {
                 );
     }
 
-    public void storeOrder(String email, Order order) {
-        this.db.getReference(Constants.DB_ORDER_REFERENCE).child(email).setValue(order)
-                .addOnCompleteListener(new OnCompleteListener(){
-                    @Override
-                    public void onComplete(@NonNull Task task) {
+    public void storeOrder(String uuid, Order order) {
+        this.db.getReference(Constants.DB_ORDER_REFERENCE).child(uuid).push().setValue(order);
+    }
 
-                    }
-                });
-    }
-/**
-    public void storeOrder(FirebaseAuth auth, Order toStore) {
-        this.db.child("orders").child(auth.getCurrentUser().getEmail()).setValue(toStore);
-    }
-*/
     public void setRestaurants(List<Restaurant> restaurants) {
         this.db.getReference(Constants.DB_RESTAURANTS_REFERENCE).setValue(restaurants);
     }
 
     public void updateRestaurants() {
+        Context context = AppCache.getInstance().getContext();
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions((RestaurantsActivity) context, new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            }, 100);
+        }
         this.db.getReference(Constants.DB_RESTAURANTS_REFERENCE).addListenerForSingleValueEvent(getRestaurantEvent());
     }
 

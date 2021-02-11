@@ -3,6 +3,7 @@ package com.android.serujilituni.goodfood.activities.restaurant;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,6 +32,7 @@ public class RestaurantsController {
         this.pay = pay;
         this.price = price;
         initViews();
+        Utils.updateUserLocation();
     }
 
     private void initViews() {
@@ -46,14 +48,20 @@ public class RestaurantsController {
 
     private void initOrderNavigationView() {
          menu.setOnClickListener(view -> openDrawer());
-         pay.setOnClickListener(view -> Utils.changeActivity(OrderSummaryActivity.class));
+         pay.setOnClickListener(view -> {
+             if(AppCache.getInstance().getCurrentOrder().size() > 0) {
+                 Utils.changeActivity(OrderSummaryActivity.class);
+             } else {
+                 Utils.showText("You can't pay for nothing!!", Toast.LENGTH_LONG);
+             }
+         });
     }
 
     private void openDrawer() {
         this.orderRv.setAdapter(new TemporalPlateAdapter(AppCache.getInstance().getCurrentOrder()));
         this.orderRv.setLayoutManager(new LinearLayoutManager(AppCache.getInstance().getContext()));
         this.orderRv.setHasFixedSize(true);
-        this.price.setText(String.valueOf(Utils.getTotalMoneyOfCurrentOrder()));
+        this.price.setText(AppCache.getInstance().getFormatter().format(Utils.getTotalMoneyOfCurrentOrder()));
         this.dl.openDrawer(GravityCompat.END);
     }
 }
