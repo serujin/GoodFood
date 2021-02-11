@@ -9,7 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.menu.MenuActivity">
+        tools:context=".activities.menu.MenuActivity"
+        android:background="#FCEABA">
 
         <LinearLayout
             android:id="@+id/main"
@@ -23,7 +24,7 @@
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="346dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="15dp"
@@ -67,6 +68,7 @@
         android:id="@+id/temporal_order_nv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:background="#FCEABA"
 
         android:layout_gravity="center_horizontal|end">
 
@@ -106,6 +108,7 @@
                 android:layout_weight="0"
                 android:gravity="center"
                 android:text="Finalize Order"
+                android:backgroundTint="@color/cardview_dark_background"
                 android:textSize="17sp" />
         </LinearLayout>
 
