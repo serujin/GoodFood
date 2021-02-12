@@ -1,13 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GoodFood</string>
-    <string name="app_logo_desc">App logo</string>
-    <string name="change_password">Change Password</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="app_logo_desc">Logo de App</string>
+    <string name="change_password">Cambiar la contraseña</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="password">Contraseña</string>
     <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="search_button">Search button</string>
-    <string name="search">Search...</string>
+    <string name="register">Registro</string>
     <string name="order_context_menu">Order context menu</string>
     <string name="order_resume">Order Resume</string>
     <string name="distance_from_restaurant">Distance from restaurant:</string>
@@ -26,9 +25,7 @@
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="restaurant_name">RESTAURANT NAME</string>
     <string name="restaurant_logo">Restaurant logo</string>
-
     <string name="default_user_address">Try again</string>
-
     <string name="required_name_error">Full name is required!</string>
     <string name="required_email_error">Email is required!</string>
     <string name="invalid_email_error">Enter a valid email!</string>
@@ -42,7 +39,6 @@
     <string name="credentials_error">Failed to login! Check credentials</string>
     <string name="register_error">Failed to Register!</string>
     <string name="order_error">Oops something went wrong, try again later</string>
-
     <string name="no_error">ALL CORRECT</string>
     <string name="successfully_registered">User has been registered successfully!</string>
     <string name="successfully_updated">User name has been updated successfully!</string>
@@ -52,7 +48,6 @@
     <string name="price">Price:</string>
     <string name="total_price">Total price: </string>
     <string name="complete_order">Complete order</string>
-
     <string name="title_activity_drawer">Drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -60,19 +55,16 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="exit_confirmation">Do you really want to exit? You will lose your order!</string>
     <string name="restaurant_confirmation">Do you really want to see other restaurant? You will lose your order!</string>
     <string name="yes_confirmation">Yes</string>
     <string name="no_confirmation">No</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="order_summary">Order Summary</string>
     <string name="cant_pay_for_nothing">You can\'t pay for nothing!!</string>
     <string name="finalize_order_error">An error occurred try to make the order again</string>
-
     <string name="plate_img">Plate_img</string>
     <string name="money">€</string>
     <string name="refresh_address_info">Refresh address info</string>
