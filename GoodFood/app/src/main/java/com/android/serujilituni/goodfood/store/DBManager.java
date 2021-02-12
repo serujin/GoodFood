@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
@@ -63,7 +64,7 @@ public class DBManager {
     public void updateRestaurants() {
         Context context = AppCache.getInstance().getContext();
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((LoginActivity) context, new String[]{
+            ActivityCompat.requestPermissions((IntermediateActivity) context, new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION
             }, 100);
         }

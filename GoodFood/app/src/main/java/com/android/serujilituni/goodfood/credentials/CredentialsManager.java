@@ -5,6 +5,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.model.User;
 import com.android.serujilituni.goodfood.store.DBManager;
@@ -19,7 +20,7 @@ public class CredentialsManager {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (CredentialsManager.userEmailIsVerified()) {
-                    Utils.changeActivity(RestaurantsActivity.class);
+                    Utils.changeActivity(IntermediateActivity.class);
                 } else {
                     CredentialsManager.notifyRequiredVerification();
                 }

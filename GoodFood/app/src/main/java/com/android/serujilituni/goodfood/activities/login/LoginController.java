@@ -22,8 +22,8 @@ public class LoginController {
     private EditText[] ets;
     private Button loginBtn;
 
-    public LoginController(TextView[] tvs, EditText[] ets, Button loginBtn, ProgressBar pb) {
-        DBManager.getInstance().updateRestaurants();
+    public LoginController(TextView[] tvs, EditText[] ets, Button loginBtn) {
+
         this.tvs = tvs;
         this.ets = ets;
         this.loginBtn = loginBtn;
@@ -54,12 +54,7 @@ public class LoginController {
         String email = Utils.getStringFromEditText(this.ets[Constants.LOGIN_EMAIL_ET_INDEX]).trim();
         String password = Utils.getStringFromEditText(this.ets[Constants.LOGIN_PASSWORD_ET_INDEX]).trim();
         if(validateUserData(email, password)) {
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    CredentialsManager.login(email, password);
-                }
-            }, 500);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> CredentialsManager.login(email, password), 500);
         }
     }
 

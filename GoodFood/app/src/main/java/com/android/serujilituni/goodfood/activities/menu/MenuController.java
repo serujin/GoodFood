@@ -48,7 +48,7 @@ public class MenuController {
     private void initOrderNavigationView() {
         menu.setOnClickListener(view -> openDrawer());
         pay.setOnClickListener(view -> {
-            if(AppCache.getInstance().getLocation()[0] == null) {
+            if(AppCache.getInstance().getLocation()[0] != null && AppCache.getInstance().getLocation()[1] != null) {
                 if(AppCache.getInstance().getCurrentOrder().size() > 0) {
                     Utils.changeActivity(OrderSummaryActivity.class);
                 } else {

@@ -22,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.activities.menu.MenuActivity;
 import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteActivity;
@@ -219,17 +220,16 @@ public class Utils {
     public static void updateUserLocation() {
         Context context = AppCache.getInstance().getContext();
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((RestaurantsActivity) context, new String[]{
+            ActivityCompat.requestPermissions((IntermediateActivity) context, new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION
             }, 100);
         }
         LocationManager lm = (LocationManager) context.getSystemService(LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, location -> {
-            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
             try {
+                Geocoder geocoder = new Geocoder(context, Locale.getDefault());
                 AppCache.getInstance().setLocation(location.getLatitude(), location.getLongitude());
                 AppCache.getInstance().setUserAddress(geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1).get(0).getAddressLine(0));
-                AppCache.getInstance().locationSetted = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }

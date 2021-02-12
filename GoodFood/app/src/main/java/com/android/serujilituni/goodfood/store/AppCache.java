@@ -18,7 +18,6 @@ public class AppCache {
     private int currentRestaurant;
     private Double[] latAndLong;
     private Context context;
-    public boolean locationSetted;
     private DecimalFormat formatter;
 
     public static AppCache getInstance(){
@@ -34,7 +33,6 @@ public class AppCache {
         this.userAddress = "Try again";
         this.formatter = new DecimalFormat("0.00");
         this.latAndLong = new Double[2];
-        this.locationSetted = false;
     }
 
     public void addPlate(TemporalPlateItem plate) {
