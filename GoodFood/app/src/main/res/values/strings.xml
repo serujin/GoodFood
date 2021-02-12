@@ -86,5 +86,7 @@
     <string name="change_name">Change Name</string>
     <string name="introduce_your_new_name">Introduce your new name</string>
     <string name="enter_your_new_name">Enter your new name</string>
+    <string name="change_user_data">Change user data</string>
+    <string name="make_an_order">Make an order</string>
 
 </resources>

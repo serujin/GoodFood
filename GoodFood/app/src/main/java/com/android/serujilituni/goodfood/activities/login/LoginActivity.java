@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.LightTheme);
         setContentView(R.layout.activity_login);
         AppCache.getInstance().setContext(this);
         new LoginController(getTextViews(), getEditTexts(), findViewById(R.id.login_btn));
@@ -35,4 +36,5 @@ public class LoginActivity extends AppCompatActivity {
                 findViewById(R.id.login_user_pass)
         };
     }
+
 }
