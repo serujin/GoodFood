@@ -2,8 +2,10 @@ package com.android.serujilituni.goodfood.store;
 
 import android.content.Context;
 
+import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.items.TemporalPlateItem;
 import com.android.serujilituni.goodfood.model.Restaurant;
+import com.android.serujilituni.goodfood.utils.Utils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class AppCache {
     private AppCache() {
         this.restaurants = new ArrayList<>();
         this.currentOrder = new ArrayList<>();
-        this.userAddress = "Try again";
+        this.userAddress = Utils.getStringFromID(R.string.default_user_address);
         this.formatter = new DecimalFormat("0.00");
         this.latAndLong = new Double[2];
     }

@@ -12,8 +12,6 @@ import androidx.core.content.ContextCompat;
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.activities.login.LoginActivity;
-import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteActivity;
-import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.model.Order;
 import com.android.serujilituni.goodfood.model.Plate;
@@ -21,7 +19,6 @@ import com.android.serujilituni.goodfood.model.Restaurant;
 import com.android.serujilituni.goodfood.model.User;
 import com.android.serujilituni.goodfood.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -83,7 +80,6 @@ public class DBManager {
     private void storeOrderAction(boolean wasSuccessful) {
         if (wasSuccessful) {
             Utils.showText(Utils.getStringFromID(R.string.successfully_order), Toast.LENGTH_LONG);
-            Utils.changeActivity(OrderCompleteActivity.class);
         } else {
             Utils.showText(Utils.getStringFromID(R.string.order_error), Toast.LENGTH_LONG);
         }
@@ -100,7 +96,7 @@ public class DBManager {
 
     private void changeNameAction(boolean wasSuccessful) {
         if (wasSuccessful) {
-            Utils.showText(Utils.getStringFromID(R.string.succsefully_updated), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(R.string.successfully_updated), Toast.LENGTH_LONG);
             Utils.changeActivity(IntermediateActivity.class);
         } else {
             Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
@@ -115,13 +111,16 @@ public class DBManager {
                 if (snapshot.getValue() != null) {
                     for (DataSnapshot data : snapshot.getChildren()) {
                         HashMap<String, Object> restaurantData = (HashMap<String, Object>) data.getValue();
-                        List<Double> address = (List<Double>) restaurantData.get("address");
-                        List<HashMap<String, Object>> plates = (List<HashMap<String, Object>>) restaurantData.get("plates");
+                        List<Double> address = (List<Double>) restaurantData.get(Constants.RESTAURANTS_ADDRESS_KEY);
+                        List<HashMap<String, Object>> plates = (List<HashMap<String, Object>>) restaurantData.get(Constants.RESTAURANTS_PLATES_KEY);
                         List<Plate> platesData = new ArrayList<>();
                         for(HashMap plate : plates) {
-                            platesData.add(new Plate((String) plate.get("name"), Float.parseFloat(String.valueOf(plate.get("price")))));
+                            platesData.add(new Plate((String) plate.get(
+                                    Constants.PLATE_NAME_KEY),
+                                    Float.parseFloat(String.valueOf(plate.get(Constants.PLATE_PRICE_KEY))))
+                            );
                         }
-                        String name = (String) restaurantData.get("name");
+                        String name = (String) restaurantData.get(Constants.PLATE_NAME_KEY);
                         restaurants.add(new Restaurant(name, address, platesData));
                     }
                     AppCache.getInstance().setRestaurants(restaurants);

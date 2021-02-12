@@ -1,5 +1,6 @@
 package com.android.serujilituni.goodfood.model;
 
+//THIS CLASS NEEDS TO HAVE ALL THOSE METHODS BC FIREBASE USE IT
 public class User {
 
     public String fullName;
@@ -13,5 +14,4 @@ public class User {
         this.fullName = fullName;
         this.email = email;
     }
-
 }

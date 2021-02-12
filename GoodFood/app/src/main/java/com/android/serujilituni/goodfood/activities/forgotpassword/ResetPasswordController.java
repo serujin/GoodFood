@@ -20,12 +20,7 @@ public class ResetPasswordController {
     }
 
     private void initResetPasswordButton() {
-        this.resetBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resetAction();
-            }
-        });
+        this.resetBtn.setOnClickListener(view -> resetAction());
     }
 
     private void resetAction() {

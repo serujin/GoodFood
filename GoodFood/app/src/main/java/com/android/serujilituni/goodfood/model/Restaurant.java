@@ -2,6 +2,7 @@ package com.android.serujilituni.goodfood.model;
 
 import java.util.List;
 
+//THIS CLASS NEEDS TO HAVE ALL THOSE METHODS BC FIREBASE USE IT
 public class Restaurant {
     private String name;
     private List<Double> location;

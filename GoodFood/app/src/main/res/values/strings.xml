@@ -28,6 +28,8 @@
     <string name="restaurant_name">RESTAURANT NAME</string>
     <string name="restaurant_logo">Restaurant logo</string>
 
+    <string name="default_user_address">Try again</string>
+
     <string name="required_name_error">Full name is required!</string>
     <string name="required_email_error">Email is required!</string>
     <string name="invalid_email_error">Enter a valid email!</string>
@@ -44,7 +46,7 @@
 
     <string name="no_error">ALL CORRECT</string>
     <string name="successfully_registered">User has been registered successfully!</string>
-    <string name="succsefully_updated">User name has been updated successfully!</string>
+    <string name="successfully_updated">User name has been updated successfully!</string>
     <string name="successfully_order">Order has been completed successfully!</string>
     <string name="plate">Plate:</string>
     <string name="quantity">Quantity:</string>
@@ -69,6 +71,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="order_summary">Order Summary</string>
+    <string name="cant_pay_for_nothing">You can\'t pay for nothing!!</string>
+    <string name="finalize_order_error">An error occurred try to make the order again</string>
 
     <string name="plate_img">Plate_img</string>
     <string name="money">€</string>

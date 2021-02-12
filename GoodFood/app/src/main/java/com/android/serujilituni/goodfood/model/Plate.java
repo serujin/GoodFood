@@ -1,5 +1,6 @@
 package com.android.serujilituni.goodfood.model;
 
+//THIS CLASS NEEDS TO HAVE ALL THOSE METHODS BC FIREBASE USE IT
 public class Plate {
     private String name;
     private float price;

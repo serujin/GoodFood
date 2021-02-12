@@ -29,6 +29,11 @@ public class Constants {
     public static final String DB_RESTAURANTS_REFERENCE = "restaurants";
     public static final String DB_ORDER_REFERENCE = "orders";
 
+    public static final String PLATE_NAME_KEY = "name";
+    public static final String PLATE_PRICE_KEY = "price";
+    public static final String RESTAURANTS_ADDRESS_KEY = "address";
+    public static final String RESTAURANTS_PLATES_KEY = "plates";
+
     public static final String MENU_EXTRA_INTENT = "restaurant";
 
     public static final int[] RESTAURANTS_DRAWABLES = new int[] {

@@ -1,11 +1,13 @@
 package com.android.serujilituni.goodfood.activities.intermediate;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.activities.changedata.ChangeDataActivity;
+import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.store.AppCache;
 import com.android.serujilituni.goodfood.store.DBManager;
@@ -30,10 +32,19 @@ public class IntermediateActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Utils.exitConfirmation(
+        exitConfirmation(
                 getResources().getString(R.string.exit_confirmation),
                 getResources().getString(R.string.yes_confirmation),
                 getResources().getString(R.string.no_confirmation)
         );
+    }
+
+    private void exitConfirmation(String msg, String positive, String negative) {
+        new AlertDialog.Builder(AppCache.getInstance().getContext()).setMessage(msg).
+                setPositiveButton(positive, (dialogInterface, i) -> {
+                    AppCache.getInstance().resetOrder();
+                    Utils.changeActivity(LoginActivity.class);
+                })
+                .setNegativeButton(negative, null).create().show();
     }
 }

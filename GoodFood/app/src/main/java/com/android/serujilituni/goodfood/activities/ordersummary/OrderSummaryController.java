@@ -1,7 +1,5 @@
 package com.android.serujilituni.goodfood.activities.ordersummary;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.Button;
 import android.widget.TextView;
 

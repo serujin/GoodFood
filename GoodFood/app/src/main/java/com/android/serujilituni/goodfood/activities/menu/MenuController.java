@@ -10,7 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.activities.ordersummary.OrderSummaryActivity;
+import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.adapters.PlateAdapter;
 import com.android.serujilituni.goodfood.adapters.TemporalPlateAdapter;
 import com.android.serujilituni.goodfood.store.AppCache;
@@ -52,10 +54,12 @@ public class MenuController {
                 if(AppCache.getInstance().getCurrentOrder().size() > 0) {
                     Utils.changeActivity(OrderSummaryActivity.class);
                 } else {
-                    Utils.showText("You can't pay for nothing!!", Toast.LENGTH_LONG);
+                    Utils.showText(Utils.getStringFromID(R.string.cant_pay_for_nothing), Toast.LENGTH_LONG);
                 }
             } else {
-                Utils.showText("An error ocurred try again", Toast.LENGTH_LONG);
+                Utils.showText(Utils.getStringFromID(R.string.finalize_order_error), Toast.LENGTH_LONG);
+                Utils.changeActivity(RestaurantsActivity.class);
+                AppCache.getInstance().resetOrder();
             }
         });
     }

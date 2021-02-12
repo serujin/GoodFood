@@ -58,45 +58,12 @@ public class Utils {
         return ValidationManager.validateResetPassword(email);
     }
 
-
-
-    public static void exitConfirmation(String msg, String positive, String negative) {
-        new AlertDialog.Builder(AppCache.getInstance().getContext()).setMessage(msg).
-                setPositiveButton(positive, (dialogInterface, i) -> {
-                    AppCache.getInstance().resetOrder();
-                    Utils.changeActivity(LoginActivity.class);
-                })
-                .setNegativeButton(negative, null).create().show();
-    }
-
-    public static void storeOrderAction(boolean wasSuccessful) {
-        if (wasSuccessful) {
-            Utils.showText(Utils.getStringFromID(R.string.successfully_order), Toast.LENGTH_LONG);
-            Utils.changeActivity(OrderCompleteActivity.class);
-        } else {
-            Utils.showText(Utils.getStringFromID(R.string.order_error), Toast.LENGTH_LONG);
-        }
-    }
-
     public static float getTotalMoneyOfCurrentOrder() {
         float total = 0f;
         for (TemporalPlateItem item : AppCache.getInstance().getCurrentOrder()) {
             total += item.getPrice() * ((float) item.getQuantity());
         }
         return total;
-    }
-
-    public static void changeToRestaurantMenu(int index, String msg, String positive, String negative) {
-        if (AppCache.getInstance().getCurrentOrder().size() != 0 && index != AppCache.getInstance().getCurrentRestaurant()) {
-            new AlertDialog.Builder(AppCache.getInstance().getContext()).setMessage(msg).
-                    setPositiveButton(positive, (dialogInterface, i) -> {
-                        AppCache.getInstance().resetOrder();
-                        Utils.loadRestaurant(index);
-                    })
-                    .setNegativeButton(negative, null).create().show();
-        } else {
-            Utils.loadRestaurant(index);
-        }
     }
 
     public static List<PlateItem> getPlatesForMenuActivity(int restaurant) {
@@ -117,15 +84,6 @@ public class Utils {
         return items;
     }
 
-    public static List<RestaurantItem> getRestaurantsFromCache() {
-        List<Restaurant> restaurants = AppCache.getInstance().getRestaurants();
-        List<RestaurantItem> items = new ArrayList<>();
-        for (int i = 0; i < restaurants.size(); i++) {
-            items.add(new RestaurantItem(Constants.RESTAURANTS_DRAWABLES[i], restaurants.get(i).getName()));
-        }
-        return items;
-    }
-
     private static int getPlateInOrderQuantity(Plate plate) {
         for (TemporalPlateItem item : AppCache.getInstance().getCurrentOrder()) {
             if (item.getName().equals(plate.getName())) {
@@ -133,13 +91,6 @@ public class Utils {
             }
         }
         return -1;
-    }
-
-    private static void loadRestaurant(int index) {
-        AppCache.getInstance().setCurrentRestaurant(index);
-        Intent intent = new Intent(AppCache.getInstance().getContext(), MenuActivity.class);
-        intent.putExtra(Constants.MENU_EXTRA_INTENT, index);
-        AppCache.getInstance().getContext().startActivity(intent);
     }
 
     public static Drawable getDrawableFromID(int id) {

@@ -3,6 +3,8 @@ package com.android.serujilituni.goodfood.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+//THIS CLASS NEEDS TO HAVE ALL THOSE METHODS BC FIREBASE USE IT
 public class Order {
     private String address;
     private String restaurant;
