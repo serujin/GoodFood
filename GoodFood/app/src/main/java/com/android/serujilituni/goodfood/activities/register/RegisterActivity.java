@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.store.AppCache;
+import com.android.serujilituni.goodfood.utils.Utils;
 
 public class RegisterActivity extends AppCompatActivity {
     @Override
@@ -15,18 +17,11 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         AppCache.getInstance().setContext(this);
         new RegisterController(getEditTexts(), findViewById(R.id.register_btn), findViewById(R.id.progress_bar));
-        /**
-         * Logout implementation
-         Button logout;
-         logout = (Button) findViewById(R.id.singOut_btn);
-         logout.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(ProfileActivity.this,MainActivity.class));
-        }
-        });
-         */
+    }
+
+    @Override
+    public void onBackPressed() {
+        Utils.changeActivity(LoginActivity.class);
     }
 
     private EditText[] getEditTexts() {

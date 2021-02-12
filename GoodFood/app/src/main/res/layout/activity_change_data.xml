@@ -17,7 +17,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="70dp" />
 
         <LinearLayout
             android:id="@+id/logo_layout"
@@ -30,12 +30,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_logo_desc"
-                tools:srcCompat="@drawable/goodfoodlogo" />
+                android:src="@drawable/goodfoodlogo" />
+
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="100dp" />
+
+        <EditText
+            android:id="@+id/new_name_et"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/enter_your_new_name"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="5dp"
+            android:autofillHints="" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:id="@+id/button_layout"
@@ -48,6 +63,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/change_password" />
+
+            <Button
+                android:id="@+id/change_fullname_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/change_name" />
         </LinearLayout>
 
         <Space

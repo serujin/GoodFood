@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.activities.login.LoginActivity;
+import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.model.Order;
@@ -46,21 +47,29 @@ public class DBManager {
         this.db = FirebaseDatabase.getInstance();
     }
 
-    public void storeUser(String userUid, User user) {
-        this.db.getReference(Constants.DB_USERS_REFERENCE).child(userUid).setValue(user)
-                .addOnCompleteListener(
-                        (OnCompleteListener) task -> Utils.registrationAction(task.isSuccessful())
-                );
+    public void storeUser(String userUid, User user, boolean update) {
+        if(update) {
+            this.db.getReference(Constants.DB_USERS_REFERENCE).child(userUid).setValue(user)
+                    .addOnCompleteListener(
+
+                            (OnCompleteListener) task -> changeNameAction(task.isSuccessful())
+                    );
+        } else {
+            this.db.getReference(Constants.DB_USERS_REFERENCE).child(userUid).setValue(user)
+                    .addOnCompleteListener(
+                            (OnCompleteListener) task ->  registrationAction(task.isSuccessful())
+                    );
+        }
     }
 
     public void storeOrder(String uuid, Order order) {
-        this.db.getReference(Constants.DB_ORDER_REFERENCE).child(uuid).push().setValue(order);
+        this.db.getReference(Constants.DB_ORDER_REFERENCE).child(uuid).push().setValue(order).addOnCompleteListener((OnCompleteListener) task -> storeOrderAction(task.isSuccessful()));
     }
-
+/**
     public void setRestaurants(List<Restaurant> restaurants) {
         this.db.getReference(Constants.DB_RESTAURANTS_REFERENCE).setValue(restaurants);
     }
-
+*/
     public void updateRestaurants() {
         Context context = AppCache.getInstance().getContext();
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -69,6 +78,33 @@ public class DBManager {
             }, 100);
         }
         this.db.getReference(Constants.DB_RESTAURANTS_REFERENCE).addListenerForSingleValueEvent(getRestaurantEvent());
+    }
+
+    private void storeOrderAction(boolean wasSuccessful) {
+        if (wasSuccessful) {
+            Utils.showText(Utils.getStringFromID(R.string.successfully_order), Toast.LENGTH_LONG);
+            Utils.changeActivity(OrderCompleteActivity.class);
+        } else {
+            Utils.showText(Utils.getStringFromID(R.string.order_error), Toast.LENGTH_LONG);
+        }
+    }
+
+    private void registrationAction(boolean wasSuccessful) {
+        if (wasSuccessful) {
+            Utils.showText(Utils.getStringFromID(R.string.successfully_registered), Toast.LENGTH_LONG);
+            Utils.changeActivity(LoginActivity.class);
+        } else {
+            Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
+        }
+    }
+
+    private void changeNameAction(boolean wasSuccessful) {
+        if (wasSuccessful) {
+            Utils.showText(Utils.getStringFromID(R.string.succsefully_updated), Toast.LENGTH_LONG);
+            Utils.changeActivity(IntermediateActivity.class);
+        } else {
+            Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
+        }
     }
 
     private ValueEventListener getRestaurantEvent() {

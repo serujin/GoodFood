@@ -27,4 +27,13 @@ public class IntermediateActivity extends AppCompatActivity {
         findViewById(R.id.change_user_data_btn).setOnClickListener(v -> Utils.changeActivity(ChangeDataActivity.class));
         findViewById(R.id.go_to_restaurant_btn).setOnClickListener(v -> Utils.changeActivity(RestaurantsActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        Utils.exitConfirmation(
+                getResources().getString(R.string.exit_confirmation),
+                getResources().getString(R.string.yes_confirmation),
+                getResources().getString(R.string.no_confirmation)
+        );
+    }
 }

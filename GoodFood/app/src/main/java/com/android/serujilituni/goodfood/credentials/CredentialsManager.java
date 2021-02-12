@@ -33,11 +33,15 @@ public class CredentialsManager {
     public static void register(String email, String password, String fullName) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                DBManager.getInstance().storeUser(getUserUid(), new User(fullName, email));
+                DBManager.getInstance().storeUser(getUserUid(), new User(fullName, email), false);
             } else {
                 Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
             }
         });
+    }
+
+    public static String getUserEmail() {
+        return FirebaseAuth.getInstance().getCurrentUser().getEmail();
     }
 
     public static void resetPassword(String email) {

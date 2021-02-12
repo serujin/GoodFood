@@ -7,7 +7,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.store.AppCache;
+import com.android.serujilituni.goodfood.utils.Utils;
 
 public class OrderSummaryActivity extends AppCompatActivity {
 
@@ -21,6 +23,11 @@ public class OrderSummaryActivity extends AppCompatActivity {
                 findViewById(R.id.plates_rv_layout),
                 getTextViews()
         );
+    }
+
+    @Override
+    public void onBackPressed() {
+        Utils.changeActivity(RestaurantsActivity.class);
     }
 
     private Button[] getButtons() {

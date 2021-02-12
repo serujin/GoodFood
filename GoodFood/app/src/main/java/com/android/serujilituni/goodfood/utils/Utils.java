@@ -32,6 +32,7 @@ import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.items.PlateItem;
 import com.android.serujilituni.goodfood.items.RestaurantItem;
 import com.android.serujilituni.goodfood.items.TemporalPlateItem;
+import com.android.serujilituni.goodfood.managers.ValidationManager;
 import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.model.Restaurant;
 import com.android.serujilituni.goodfood.store.AppCache;
@@ -46,65 +47,18 @@ import static android.content.Context.LOCATION_SERVICE;
 
 public class Utils {
     public static int validateLogin(String email, String password) {
-        if (email.isEmpty()) {
-            return R.string.required_email_error;
-        }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return R.string.invalid_email_error;
-        }
-        if (password.isEmpty()) {
-            return R.string.required_password_error;
-        }
-        if (password.length() < 8) {
-            return R.string.incorrect_password_length_error;
-        }
-        return R.string.no_error;
+        return ValidationManager.validateLogin(email, password);
     }
 
     public static int validateRegister(String email, String password, String confirmed, String name) {
-        if (name.isEmpty()) {
-            return R.string.required_name_error;
-        }
-        if (email.isEmpty()) {
-            return R.string.required_email_error;
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return R.string.invalid_email_error;
-        }
-
-        if (password.isEmpty()) {
-            return R.string.required_password_error;
-        }
-
-        if (password.length() < 8) {
-            return R.string.incorrect_password_length_error;
-        }
-
-        if (!password.equals(confirmed)) {
-            return R.string.non_equals_password_error;
-        }
-        return R.string.no_error;
+        return ValidationManager.validateRegister(email, password, confirmed, name);
     }
 
     public static int validateResetPassword(String email) {
-        if (email.isEmpty()) {
-            return R.string.required_email_error;
-        }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return R.string.invalid_email_error;
-        }
-        return R.string.no_error;
+        return ValidationManager.validateResetPassword(email);
     }
 
-    public static void registrationAction(boolean wasSuccessful) {
-        if (wasSuccessful) {
-            Utils.showText(Utils.getStringFromID(R.string.successfully_registered), Toast.LENGTH_LONG);
-            Utils.changeActivity(LoginActivity.class);
-        } else {
-            Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
-        }
-    }
+
 
     public static void exitConfirmation(String msg, String positive, String negative) {
         new AlertDialog.Builder(AppCache.getInstance().getContext()).setMessage(msg).
@@ -253,7 +207,7 @@ public class Utils {
         int distance = (int) Math.ceil(Utils.getOrderDistance());
         Random r = new Random();
         List<TemporalPlateItem> plates = AppCache.getInstance().getCurrentOrder();
-        for(TemporalPlateItem plate : plates) {
+        for (TemporalPlateItem plate : plates) {
             time += plate.getQuantity() * (r.nextInt(9) + 1);
         }
         time += distance * (r.nextInt(5) + 1);

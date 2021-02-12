@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.store.AppCache;
 import com.android.serujilituni.goodfood.utils.Utils;
 import com.bumptech.glide.Glide;
@@ -29,10 +30,6 @@ public class OrderCompleteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Utils.exitConfirmation(
-                getResources().getString(R.string.exit_confirmation),
-                getResources().getString(R.string.yes_confirmation),
-                getResources().getString(R.string.no_confirmation)
-        );
+        Utils.changeActivity(IntermediateActivity.class);
     }
 }

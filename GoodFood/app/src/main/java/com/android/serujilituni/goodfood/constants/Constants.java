@@ -22,6 +22,9 @@ public class Constants {
     public static final int ORDER_SUMMARY_DELIVER_TV = 3;
     public static final int ORDER_SUMMARY_FINAL_PRICE_TV = 4;
 
+    public static final int CHANGE_DATA_PASSWORD_BTN = 0;
+    public static final int CHANGE_DATA_NAME_BTN = 1;
+
     public static final String DB_USERS_REFERENCE = "users";
     public static final String DB_RESTAURANTS_REFERENCE = "restaurants";
     public static final String DB_ORDER_REFERENCE = "orders";

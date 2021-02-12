@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.store.AppCache;
 import com.android.serujilituni.goodfood.utils.Utils;
 
@@ -31,11 +32,7 @@ public class RestaurantsActivity extends AppCompatActivity {
         if(drawer.isDrawerOpen(GravityCompat.END)) {
             drawer.closeDrawers();
         } else {
-            Utils.exitConfirmation(
-                    getResources().getString(R.string.exit_confirmation),
-                    getResources().getString(R.string.yes_confirmation),
-                    getResources().getString(R.string.no_confirmation)
-            );
+            Utils.changeActivity(IntermediateActivity.class);
         }
     }
 }
