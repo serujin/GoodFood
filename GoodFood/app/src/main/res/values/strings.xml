@@ -6,6 +6,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+
     <string name="order_context_menu">Order context menu</string>
     <string name="order_resume">Order Resume</string>
     <string name="distance_from_restaurant">Distance from restaurant:</string>
@@ -71,6 +72,7 @@
 
     <string name="plate_img">Plate_img</string>
     <string name="money">€</string>
+
     <string name="km">km</string>
     <string name="equal">=</string>
     <string name="add">+</string>
