@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         AppCache.getInstance().setContext(this);
-        DBManager.getInstance().updateRestaurants();
+
         new LoginController(getTextViews(), getEditTexts(), findViewById(R.id.login_btn), findViewById(R.id.progress_bar));
         /*** Test Data
 

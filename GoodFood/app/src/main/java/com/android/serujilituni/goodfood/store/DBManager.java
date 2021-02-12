@@ -63,7 +63,7 @@ public class DBManager {
     public void updateRestaurants() {
         Context context = AppCache.getInstance().getContext();
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((RestaurantsActivity) context, new String[]{
+            ActivityCompat.requestPermissions((LoginActivity) context, new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION
             }, 100);
         }

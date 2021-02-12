@@ -14,6 +14,7 @@ import com.android.serujilituni.goodfood.activities.forgotpassword.ResetPassword
 import com.android.serujilituni.goodfood.activities.register.RegisterActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.credentials.CredentialsManager;
+import com.android.serujilituni.goodfood.store.DBManager;
 import com.android.serujilituni.goodfood.utils.Utils;
 
 public class LoginController {
@@ -22,6 +23,7 @@ public class LoginController {
     private Button loginBtn;
 
     public LoginController(TextView[] tvs, EditText[] ets, Button loginBtn, ProgressBar pb) {
+        DBManager.getInstance().updateRestaurants();
         this.tvs = tvs;
         this.ets = ets;
         this.loginBtn = loginBtn;
