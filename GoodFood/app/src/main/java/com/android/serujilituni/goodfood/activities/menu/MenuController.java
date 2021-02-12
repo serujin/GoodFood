@@ -48,10 +48,14 @@ public class MenuController {
     private void initOrderNavigationView() {
         menu.setOnClickListener(view -> openDrawer());
         pay.setOnClickListener(view -> {
-            if(AppCache.getInstance().getCurrentOrder().size() > 0) {
-                Utils.changeActivity(OrderSummaryActivity.class);
+            if(AppCache.getInstance().getLocation()[0] == null) {
+                if(AppCache.getInstance().getCurrentOrder().size() > 0) {
+                    Utils.changeActivity(OrderSummaryActivity.class);
+                } else {
+                    Utils.showText("You can't pay for nothing!!", Toast.LENGTH_LONG);
+                }
             } else {
-                Utils.showText("You can't pay for nothing!!", Toast.LENGTH_LONG);
+                Utils.showText("An error ocurred try again", Toast.LENGTH_LONG);
             }
         });
     }
