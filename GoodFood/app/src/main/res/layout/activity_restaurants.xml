@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:text="Order Summary"
+                android:text="@string/order_summary"
                 android:textSize="25sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -118,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total price:"
+                    android:text="@string/total_price"
                     android:textAlignment="textEnd"
                     android:textSize="25sp" />
 
@@ -148,9 +148,9 @@
                 android:layout_width="220dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="20dp"
-                android:gravity="center"
                 android:backgroundTint="@color/cardview_dark_background"
-                android:text="Finalize Order"
+                android:gravity="center"
+                android:text="@string/finalize_order"
                 android:textSize="17sp" />
 
         </LinearLayout>

@@ -69,6 +69,7 @@
     <string name="plate_img">Plate_img</string>
     <string name="money">€</string>
     <string name="km">km</string>
+    <string name="finalize_order">Finalizar pedido</string>
     <string name="equal">=</string>
     <string name="add">+</string>
     <string name="money_deliver">€ (envío)</string>
@@ -77,5 +78,6 @@
     <string name="enter_your_new_name">Introduzca su nuevo nombre</string>
     <string name="change_user_data">Cambiar datos de usuario</string>
     <string name="make_an_order">Hacer un pedido</string>
+    <string name="minutes">minutos</string>
 
 </resources>
