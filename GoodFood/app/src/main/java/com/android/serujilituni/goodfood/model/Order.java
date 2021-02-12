@@ -1,5 +1,7 @@
 package com.android.serujilituni.goodfood.model;
 
+import com.android.serujilituni.goodfood.items.TemporalPlateItem;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,13 +10,13 @@ import java.util.List;
 public class Order {
     private String address;
     private String restaurant;
-    private List<Plate> plates;
+    private List<TemporalPlateItem> plates;
     private LocalDateTime dateTime;
 
     public Order() {
     }
 
-    public Order(String address, String restaurant, List<Plate> plates, LocalDateTime dateTime) {
+    public Order(String address, String restaurant, List<TemporalPlateItem> plates, LocalDateTime dateTime) {
         this.address = address;
         this.restaurant = restaurant;
         this.plates = plates;
@@ -37,11 +39,11 @@ public class Order {
         this.restaurant = restaurant;
     }
 
-    public List<Plate> getPlates() {
+    public List<TemporalPlateItem> getPlates() {
         return plates;
     }
 
-    public void setPlates(List<Plate> plates) {
+    public void setPlates(List<TemporalPlateItem> plates) {
         this.plates = plates;
     }
 

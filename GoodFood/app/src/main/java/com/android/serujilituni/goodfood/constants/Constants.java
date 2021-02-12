@@ -36,6 +36,10 @@ public class Constants {
 
     public static final String MENU_EXTRA_INTENT = "restaurant";
 
+    public static final int LOCATION_NO_ERROR = 0;
+    public static final int LOCATION_MENU_ERROR = 1;
+    public static final int LOCATION_RESTAURANT_ERROR = 2;
+
     public static final int[] RESTAURANTS_DRAWABLES = new int[] {
             R.drawable.mcdonalds,
             R.drawable.kebab_restaurant,

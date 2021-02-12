@@ -22,7 +22,6 @@ public class IntermediateActivity extends AppCompatActivity {
         AppCache.getInstance().setContext(this);
         DBManager.getInstance().updateRestaurants();
         initButtons();
-        Utils.updateUserLocation();
     }
 
     private void initButtons() {
@@ -32,19 +31,19 @@ public class IntermediateActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        exitConfirmation(
-                getResources().getString(R.string.exit_confirmation),
-                getResources().getString(R.string.yes_confirmation),
-                getResources().getString(R.string.no_confirmation)
-        );
+        if(AppCache.getInstance().getCurrentOrder().size() < 1) {
+            exitConfirmation(getResources().getString(R.string.exit_confirmation_with_login));
+        } else {
+            exitConfirmation(getResources().getString(R.string.exit_confirmation));
+        }
     }
 
-    private void exitConfirmation(String msg, String positive, String negative) {
+    private void exitConfirmation(String msg) {
         new AlertDialog.Builder(AppCache.getInstance().getContext()).setMessage(msg).
-                setPositiveButton(positive, (dialogInterface, i) -> {
+                setPositiveButton(getResources().getString(R.string.yes_confirmation), (dialogInterface, i) -> {
                     AppCache.getInstance().resetOrder();
                     Utils.changeActivity(LoginActivity.class);
                 })
-                .setNegativeButton(negative, null).create().show();
+                .setNegativeButton(getResources().getString(R.string.no_confirmation), null).create().show();
     }
 }

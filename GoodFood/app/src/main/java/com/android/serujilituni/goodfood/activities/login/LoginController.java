@@ -14,6 +14,7 @@ import com.android.serujilituni.goodfood.activities.forgotpassword.ResetPassword
 import com.android.serujilituni.goodfood.activities.register.RegisterActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.credentials.CredentialsManager;
+import com.android.serujilituni.goodfood.managers.AppLocationManager;
 import com.android.serujilituni.goodfood.store.DBManager;
 import com.android.serujilituni.goodfood.utils.Utils;
 
@@ -23,11 +24,11 @@ public class LoginController {
     private Button loginBtn;
 
     public LoginController(TextView[] tvs, EditText[] ets, Button loginBtn) {
-
         this.tvs = tvs;
         this.ets = ets;
         this.loginBtn = loginBtn;
         initComponents();
+        AppLocationManager.getInstance().updateGps();
     }
 
     private void initComponents() {
@@ -62,7 +63,7 @@ public class LoginController {
     private boolean validateUserData(String email, String password) {
         int validationState = Utils.validateLogin(email, password);
         if(Utils.isAnErrorState(validationState)) {
-            Utils.showText(Utils.getStringFromID(validationState), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(validationState));
             showError(validationState);
             return false;
         }

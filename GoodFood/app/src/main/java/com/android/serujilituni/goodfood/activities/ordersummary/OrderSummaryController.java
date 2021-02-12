@@ -12,6 +12,7 @@ import com.android.serujilituni.goodfood.adapters.TemporalPlateAdapter;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.credentials.CredentialsManager;
 import com.android.serujilituni.goodfood.items.TemporalPlateItem;
+import com.android.serujilituni.goodfood.managers.AppLocationManager;
 import com.android.serujilituni.goodfood.model.Order;
 import com.android.serujilituni.goodfood.model.Plate;
 import com.android.serujilituni.goodfood.store.AppCache;
@@ -53,7 +54,7 @@ public class OrderSummaryController {
     }
 
     private void showInformation() {
-        float distance = Utils.getOrderDistance();
+        float distance = AppLocationManager.getInstance().getOrderDistance();
         float platePrice = Utils.getTotalMoneyOfCurrentOrder();
         float deliverPrice = Utils.getDeliverPrice();
         float total = platePrice + deliverPrice;
@@ -75,14 +76,10 @@ public class OrderSummaryController {
 
     private Order getOrder() {
         List<TemporalPlateItem> plates = AppCache.getInstance().getCurrentOrder();
-        List<Plate> plateToSave = new ArrayList<>();
-        for(TemporalPlateItem item : plates) {
-            plateToSave.add(new Plate(item.getName(), item.getPrice()));
-        }
         return new Order(
                 this.tvs[Constants.ORDER_SUMMARY_ADDRESS_TV].getText().toString(),
                 AppCache.getInstance().getRestaurants().get(AppCache.getInstance().getCurrentRestaurant()).getName(),
-                plateToSave,
+                plates,
                 LocalDateTime.now()
         );
     }

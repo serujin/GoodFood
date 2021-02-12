@@ -46,7 +46,7 @@ public class RegisterController {
     private boolean validateUserData(String email, String password, String confirmed, String name) {
         int validationState = Utils.validateRegister(email, password, confirmed, name);
         if(Utils.isAnErrorState(validationState)) {
-            Utils.showText(Utils.getStringFromID(validationState), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(validationState));
             showError(validationState);
             return false;
         }

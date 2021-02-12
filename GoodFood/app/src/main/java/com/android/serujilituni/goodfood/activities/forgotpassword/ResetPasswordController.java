@@ -32,7 +32,7 @@ public class ResetPasswordController {
     private boolean validateUserData(String email) {
         int validationState = Utils.validateResetPassword(email);
         if(Utils.isAnErrorState(validationState)) {
-            Utils.showText(Utils.getStringFromID(validationState), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(validationState));
             showError(validationState);
             return false;
         }

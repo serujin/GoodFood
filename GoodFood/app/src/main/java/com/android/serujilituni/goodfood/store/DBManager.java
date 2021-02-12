@@ -45,7 +45,7 @@ public class DBManager {
     }
 
     public void storeUser(String userUid, User user, boolean update) {
-        if(update) {
+        if (update) {
             this.db.getReference(Constants.DB_USERS_REFERENCE).child(userUid).setValue(user)
                     .addOnCompleteListener(
 
@@ -54,7 +54,7 @@ public class DBManager {
         } else {
             this.db.getReference(Constants.DB_USERS_REFERENCE).child(userUid).setValue(user)
                     .addOnCompleteListener(
-                            (OnCompleteListener) task ->  registrationAction(task.isSuccessful())
+                            (OnCompleteListener) task -> registrationAction(task.isSuccessful())
                     );
         }
     }
@@ -62,11 +62,12 @@ public class DBManager {
     public void storeOrder(String uuid, Order order) {
         this.db.getReference(Constants.DB_ORDER_REFERENCE).child(uuid).push().setValue(order).addOnCompleteListener((OnCompleteListener) task -> storeOrderAction(task.isSuccessful()));
     }
-/**
-    public void setRestaurants(List<Restaurant> restaurants) {
-        this.db.getReference(Constants.DB_RESTAURANTS_REFERENCE).setValue(restaurants);
-    }
-*/
+
+    /**
+     * public void setRestaurants(List<Restaurant> restaurants) {
+     * this.db.getReference(Constants.DB_RESTAURANTS_REFERENCE).setValue(restaurants);
+     * }
+     */
     public void updateRestaurants() {
         Context context = AppCache.getInstance().getContext();
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -79,27 +80,27 @@ public class DBManager {
 
     private void storeOrderAction(boolean wasSuccessful) {
         if (wasSuccessful) {
-            Utils.showText(Utils.getStringFromID(R.string.successfully_order), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(R.string.successfully_order));
         } else {
-            Utils.showText(Utils.getStringFromID(R.string.order_error), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(R.string.order_error));
         }
     }
 
     private void registrationAction(boolean wasSuccessful) {
         if (wasSuccessful) {
-            Utils.showText(Utils.getStringFromID(R.string.successfully_registered), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(R.string.successfully_registered));
             Utils.changeActivity(LoginActivity.class);
         } else {
-            Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(R.string.register_error));
         }
     }
 
     private void changeNameAction(boolean wasSuccessful) {
         if (wasSuccessful) {
-            Utils.showText(Utils.getStringFromID(R.string.successfully_updated), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(R.string.successfully_updated));
             Utils.changeActivity(IntermediateActivity.class);
         } else {
-            Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
+            Utils.showText(Utils.getStringFromID(R.string.register_error));
         }
     }
 
@@ -114,7 +115,7 @@ public class DBManager {
                         List<Double> address = (List<Double>) restaurantData.get(Constants.RESTAURANTS_ADDRESS_KEY);
                         List<HashMap<String, Object>> plates = (List<HashMap<String, Object>>) restaurantData.get(Constants.RESTAURANTS_PLATES_KEY);
                         List<Plate> platesData = new ArrayList<>();
-                        for(HashMap plate : plates) {
+                        for (HashMap plate : plates) {
                             platesData.add(new Plate((String) plate.get(
                                     Constants.PLATE_NAME_KEY),
                                     Float.parseFloat(String.valueOf(plate.get(Constants.PLATE_PRICE_KEY))))
@@ -126,9 +127,10 @@ public class DBManager {
                     AppCache.getInstance().setRestaurants(restaurants);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Utils.showText(Utils.getStringFromID(R.string.loading_restaurant_error), Toast.LENGTH_LONG);
+                Utils.showText(Utils.getStringFromID(R.string.loading_restaurant_error));
                 Utils.changeActivity(LoginActivity.class);
             }
         };

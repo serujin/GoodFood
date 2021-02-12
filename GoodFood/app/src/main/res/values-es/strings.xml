@@ -18,7 +18,6 @@
     <string name="price">Precio:</string>
     <string name="total_price">Precio total: </string>
     <string name="complete_order">Pedido completado</string>
-
     <string name="order_context_menu">Menú contextual del pedido</string>
     <string name="order_resume">Resumen del pedido</string>
     <string name="distance_from_restaurant">Distancia del restaurante:</string>
@@ -48,7 +47,6 @@
     <string name="reset_error">Introduzca un email registrado</string>
     <string name="loading_restaurant_error">No se han podido cargar los restaurantes, vuelve a intentarlo</string>
     <string name="credentials_error">Credenciales no válidas</string>
-
     <string name="title_activity_drawer">Drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -56,8 +54,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Ajustes</string>
-    <string name="exit_confirmation">¿De verdad desea salir? ¡Perderás tu pedido!</string>
-    <string name="restaurant_confirmation">¿Quiere continuar viendo otro restaurante? ¡Perderas tu pedido actual!</string>
+    <string name="exit_confirmation_with_login">¿De verdad desea salir?</string>
+    <string name="exit_confirmation">¿De verdad desea salir? ¡Perderá su pedido!</string>
+    <string name="restaurant_confirmation">¿Quiere continuar viendo otro restaurante? ¡Perderá su pedido actual!</string>
     <string name="yes_confirmation">Si</string>
     <string name="no_confirmation">No</string>
     <string name="menu_home">Home</string>
@@ -79,5 +78,4 @@
     <string name="change_user_data">Cambiar datos de usuario</string>
     <string name="make_an_order">Hacer un pedido</string>
     <string name="minutes">minutos</string>
-
 </resources>

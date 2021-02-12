@@ -1,49 +1,24 @@
 package com.android.serujilituni.goodfood.utils;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.util.Patterns;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.android.serujilituni.goodfood.R;
-import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
-import com.android.serujilituni.goodfood.activities.login.LoginActivity;
-import com.android.serujilituni.goodfood.activities.menu.MenuActivity;
-import com.android.serujilituni.goodfood.activities.ordercomplete.OrderCompleteActivity;
-import com.android.serujilituni.goodfood.activities.ordersummary.OrderSummaryActivity;
-import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.items.PlateItem;
-import com.android.serujilituni.goodfood.items.RestaurantItem;
 import com.android.serujilituni.goodfood.items.TemporalPlateItem;
 import com.android.serujilituni.goodfood.managers.ValidationManager;
 import com.android.serujilituni.goodfood.model.Plate;
-import com.android.serujilituni.goodfood.model.Restaurant;
 import com.android.serujilituni.goodfood.store.AppCache;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
-import static android.content.Context.LOCATION_SERVICE;
 
 public class Utils {
     public static int validateLogin(String email, String password) {
@@ -110,8 +85,8 @@ public class Utils {
         context.startActivity(new Intent(context, toChange));
     }
 
-    public static void showText(String text, int duration) {
-        Toast.makeText(AppCache.getInstance().getContext(), text, duration).show();
+    public static void showText(String text) {
+        Toast.makeText(AppCache.getInstance().getContext(), text, Toast.LENGTH_LONG).show();
     }
 
     public static String getStringFromID(int id) {
@@ -122,51 +97,9 @@ public class Utils {
         return et.getText().toString();
     }
 
-    public static void updateUserLocation() {
-        Context context = AppCache.getInstance().getContext();
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((IntermediateActivity) context, new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION
-            }, 100);
-        }
-        LocationManager lm = (LocationManager) context.getSystemService(LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, location -> {
-            try {
-                Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-                AppCache.getInstance().setLocation(location.getLatitude(), location.getLongitude());
-                AppCache.getInstance().setUserAddress(geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1).get(0).getAddressLine(0));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
-    public static float getOrderDistance() {
-        Location restaurant = new Location("");
-        Location destination = new Location("");
-        List<Double> restaurantData = AppCache.getInstance().getRestaurants().get(AppCache.getInstance().getCurrentRestaurant()).getAddress();
-        restaurant.setLatitude(restaurantData.get(0));
-        restaurant.setLongitude(restaurantData.get(1));
-        Double[] data = AppCache.getInstance().getLocation();
-        destination.setLatitude(data[0]);
-        destination.setLongitude(data[1]);
-        return restaurant.distanceTo(destination) / 1000;
-    }
-
-    public static int getOrderTime() {
-        int time = 0;
-        int distance = (int) Math.ceil(Utils.getOrderDistance());
-        Random r = new Random();
-        List<TemporalPlateItem> plates = AppCache.getInstance().getCurrentOrder();
-        for (TemporalPlateItem plate : plates) {
-            time += plate.getQuantity() * (r.nextInt(9) + 1);
-        }
-        time += distance * (r.nextInt(5) + 1);
-        return time;
-    }
-
     public static float getDeliverPrice() {
         Random r = new Random();
         return ((float) r.nextInt(2)) + r.nextFloat();
     }
+
 }

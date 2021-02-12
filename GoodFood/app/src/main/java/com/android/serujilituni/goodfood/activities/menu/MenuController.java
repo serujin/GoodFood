@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
 import com.android.serujilituni.goodfood.activities.ordersummary.OrderSummaryActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.adapters.PlateAdapter;
 import com.android.serujilituni.goodfood.adapters.TemporalPlateAdapter;
+import com.android.serujilituni.goodfood.constants.Constants;
+import com.android.serujilituni.goodfood.managers.AppLocationManager;
 import com.android.serujilituni.goodfood.store.AppCache;
 import com.android.serujilituni.goodfood.utils.Utils;
 
@@ -54,11 +57,12 @@ public class MenuController {
                 if(AppCache.getInstance().getCurrentOrder().size() > 0) {
                     Utils.changeActivity(OrderSummaryActivity.class);
                 } else {
-                    Utils.showText(Utils.getStringFromID(R.string.cant_pay_for_nothing), Toast.LENGTH_LONG);
+                    Utils.showText(Utils.getStringFromID(R.string.cant_pay_for_nothing));
                 }
             } else {
-                Utils.showText(Utils.getStringFromID(R.string.finalize_order_error), Toast.LENGTH_LONG);
-                Utils.changeActivity(RestaurantsActivity.class);
+                AppLocationManager.getInstance().updateGps();
+                Utils.showText(Utils.getStringFromID(R.string.finalize_order_error));
+                Utils.changeActivity(IntermediateActivity.class);
                 AppCache.getInstance().resetOrder();
             }
         });

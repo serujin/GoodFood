@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.serujilituni.goodfood">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -13,10 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GoodFood">
         <activity android:name=".activities.intermediate.IntermediateActivity"></activity>
-        <activity
-            android:name=".activities.tests.Drawer"
-            android:label="@string/title_activity_drawer"
-            android:theme="@style/Theme.GoodFood.NoActionBar" />
         <activity android:name=".activities.forgotpassword.ResetPasswordActivity" />
         <activity android:name=".activities.ordercomplete.OrderCompleteActivity" />
         <activity android:name=".activities.ordersummary.OrderSummaryActivity" />

@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import com.android.serujilituni.goodfood.R;
 
+import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.store.AppCache;
 import com.android.serujilituni.goodfood.store.DBManager;
+import com.android.serujilituni.goodfood.utils.Utils;
 
 public class LoginActivity extends AppCompatActivity {
 

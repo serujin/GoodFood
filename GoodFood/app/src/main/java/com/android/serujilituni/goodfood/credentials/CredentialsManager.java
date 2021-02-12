@@ -25,7 +25,7 @@ public class CredentialsManager {
                     CredentialsManager.notifyRequiredVerification();
                 }
             } else {
-                Utils.showText(Utils.getStringFromID(R.string.credentials_error), Toast.LENGTH_LONG);
+                Utils.showText(Utils.getStringFromID(R.string.credentials_error));
             }
         });
     }
@@ -35,7 +35,7 @@ public class CredentialsManager {
             if (task.isSuccessful()) {
                 DBManager.getInstance().storeUser(getUserUid(), new User(fullName, email), false);
             } else {
-                Utils.showText(Utils.getStringFromID(R.string.register_error), Toast.LENGTH_LONG);
+                Utils.showText(Utils.getStringFromID(R.string.register_error));
             }
         });
     }
@@ -50,7 +50,7 @@ public class CredentialsManager {
             if(task.isSuccessful()) {
                 msg = Utils.getStringFromID(R.string.check_reset_email);
             }
-            Utils.showText(msg, Toast.LENGTH_LONG);
+            Utils.showText(msg);
         });
     }
 
@@ -64,6 +64,6 @@ public class CredentialsManager {
 
     private static void notifyRequiredVerification() {
         FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
-        Utils.showText(Utils.getStringFromID(R.string.check_your_email), Toast.LENGTH_LONG);
+        Utils.showText(Utils.getStringFromID(R.string.check_your_email));
     }
 }
