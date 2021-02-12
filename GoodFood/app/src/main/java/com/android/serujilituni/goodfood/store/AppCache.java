@@ -32,7 +32,7 @@ public class AppCache {
     private AppCache() {
         this.restaurants = new ArrayList<>();
         this.currentOrder = new ArrayList<>();
-        this.userAddress = Utils.getStringFromID(R.string.default_user_address);
+        this.userAddress = "";
         this.formatter = new DecimalFormat("0.00");
         this.latAndLong = new Double[2];
     }
