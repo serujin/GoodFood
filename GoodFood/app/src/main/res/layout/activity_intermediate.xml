@@ -7,6 +7,7 @@
     tools:context=".activities.intermediate.IntermediateActivity">
 
     <LinearLayout
+        android:background="#FCEABA"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -46,6 +47,7 @@
                     android:id="@+id/change_user_data_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/cardview_shadow_end_color"
                     app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
                 <TextView
@@ -53,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Change user data" />
+                    android:text="@string/change_user_data" />
             </LinearLayout>
 
             <Space
@@ -70,14 +72,16 @@
                     android:id="@+id/go_to_restaurant_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_baseline_restaurant_24" />
+                    app:srcCompat="@drawable/ic_baseline_restaurant_24"
+                    android:background="@color/cardview_shadow_end_color"
+                    />
 
                 <TextView
                     android:id="@+id/textView17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Make an order" />
+                    android:text="@string/make_an_order" />
             </LinearLayout>
 
         </LinearLayout>

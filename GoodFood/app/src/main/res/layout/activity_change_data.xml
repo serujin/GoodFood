@@ -9,6 +9,7 @@
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
+        android:background="#FCEABA"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -41,16 +42,18 @@
         <EditText
             android:id="@+id/new_name_et"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
+            android:autofillHints=""
+            android:background="@drawable/rounded_edittext"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/enter_your_new_name"
             android:inputType="textPersonName"
-            android:paddingHorizontal="5dp"
-            android:autofillHints="" />
+            android:paddingHorizontal="5dp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="29dp" />
 
         <LinearLayout
             android:id="@+id/button_layout"
@@ -59,12 +62,14 @@
             android:orientation="vertical">
 
             <Button
+                android:backgroundTint="@color/cardview_dark_background"
                 android:id="@+id/change_password_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/change_password" />
 
             <Button
+                android:backgroundTint="@color/cardview_dark_background"
                 android:id="@+id/change_fullname_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
