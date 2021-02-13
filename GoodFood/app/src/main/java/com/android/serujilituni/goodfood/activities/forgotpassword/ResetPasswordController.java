@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.credentials.CredentialsManager;
 import com.android.serujilituni.goodfood.utils.Utils;
 
@@ -26,6 +27,7 @@ public class ResetPasswordController {
         String email = Utils.getStringFromEditText(this.mailEt);
         if(validateUserData(email)) {
             CredentialsManager.resetPassword(email);
+            Utils.changeActivity(LoginActivity.class);
         }
     }
 

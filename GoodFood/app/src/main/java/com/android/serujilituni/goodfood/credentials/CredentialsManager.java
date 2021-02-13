@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.android.serujilituni.goodfood.R;
 import com.android.serujilituni.goodfood.activities.intermediate.IntermediateActivity;
+import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.activities.restaurant.RestaurantsActivity;
 import com.android.serujilituni.goodfood.model.User;
 import com.android.serujilituni.goodfood.store.DBManager;
@@ -49,6 +50,7 @@ public class CredentialsManager {
             String msg = Utils.getStringFromID(R.string.reset_error);
             if(task.isSuccessful()) {
                 msg = Utils.getStringFromID(R.string.check_reset_email);
+                Utils.changeActivity(LoginActivity.class);
             }
             Utils.showText(msg);
         });

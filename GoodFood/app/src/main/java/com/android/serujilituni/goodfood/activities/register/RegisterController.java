@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.serujilituni.goodfood.R;
+import com.android.serujilituni.goodfood.activities.login.LoginActivity;
 import com.android.serujilituni.goodfood.constants.Constants;
 import com.android.serujilituni.goodfood.credentials.CredentialsManager;
 import com.android.serujilituni.goodfood.utils.Utils;
@@ -40,6 +41,7 @@ public class RegisterController {
             pb.setVisibility(View.VISIBLE);
             CredentialsManager.register(email, password, name);
             pb.setVisibility(View.GONE);
+            Utils.changeActivity(LoginActivity.class);
         }
     }
 
