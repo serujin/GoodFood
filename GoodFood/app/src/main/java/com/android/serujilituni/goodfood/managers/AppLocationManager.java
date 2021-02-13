@@ -25,7 +25,7 @@ import static android.content.Context.LOCATION_SERVICE;
 public class AppLocationManager implements LocationListener {
     private static AppLocationManager instance;
 
-    private int orderDistance;
+    private float orderDistance;
 
     public static AppLocationManager getInstance() {
         if(AppLocationManager.instance == null) {
@@ -56,7 +56,8 @@ public class AppLocationManager implements LocationListener {
         Double[] data = AppCache.getInstance().getLocation();
         destination.setLatitude(data[0]);
         destination.setLongitude(data[1]);
-        return restaurant.distanceTo(destination) / 1000;
+        this.orderDistance = restaurant.distanceTo(destination) / 1000;
+        return this.orderDistance;
     }
 
     public int getOrderTime() {
