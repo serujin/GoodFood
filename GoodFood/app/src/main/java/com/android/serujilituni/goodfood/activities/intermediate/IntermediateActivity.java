@@ -31,7 +31,7 @@ public class IntermediateActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(AppCache.getInstance().getCurrentOrder().size() < 1) {
+        if(AppCache.getInstance().getCurrentOrder().size() > 0) {
             exitConfirmation(getResources().getString(R.string.exit_confirmation_with_login));
         } else {
             exitConfirmation(getResources().getString(R.string.exit_confirmation));
