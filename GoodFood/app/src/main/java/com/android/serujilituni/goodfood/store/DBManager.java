@@ -48,7 +48,6 @@ public class DBManager {
         if (update) {
             this.db.getReference(Constants.DB_USERS_REFERENCE).child(userUid).setValue(user)
                     .addOnCompleteListener(
-
                             (OnCompleteListener) task -> changeNameAction(task.isSuccessful())
                     );
         } else {
@@ -89,7 +88,6 @@ public class DBManager {
     private void registrationAction(boolean wasSuccessful) {
         if (wasSuccessful) {
             Utils.showText(Utils.getStringFromID(R.string.successfully_registered));
-            Utils.changeActivity(LoginActivity.class);
         } else {
             Utils.showText(Utils.getStringFromID(R.string.register_error));
         }
