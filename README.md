@@ -5,6 +5,8 @@ Is a native Android app to takeaway food, it even uses GPS to send* the food to 
 
 _The app cannot bring you food home obviously_*
 
+---------------------------------------------------------------------------------------------------------------------------
+
 # GoodFood ESPAÑOL
 
 GoodFood es el trabajo final de Manuel y Sergio en nuestra asignatura de desarrollo Android. 
